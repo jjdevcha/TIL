@@ -4,11 +4,6 @@
 
 A collection of brief notes about what I've learned day to day across a
 variety of languages and technologies. 
- 
-For a steady stream of TILs from a variety of rocketeers, checkout
-[til.hashrocket.com](https://til.hashrocket.com/).
-
-_848 TILs and counting..._
 
 ---
 
