@@ -9,38 +9,12 @@ variety of languages and technologies.
 
 ### Categories
 
-* [Ack](#ack)
-* [Chrome](#chrome)
-* [Clojure](#clojure)
-* [CSS](#css)
-* [Devops](#devops)
-* [Elixir](#elixir)
-* [Git](#git)
-* [Go](#go)
-* [HTML](#html)
-* [Internet](#internet)
-* [JavaScript](#javascript)
-* [Linux](#linux)
-* [Mac](#mac)
-* [MySQL](#mysql)
-* [Phoenix](#phoenix)
-* [PostgreSQL](#postgresql)
-* [Rails](#rails)
-* [React](#react)
-* [React Native](#react-native)
-* [ReasonML](#reasonml)
-* [Ruby](#ruby)
-* [tmux](#tmux)
-* [Unix](#unix)
-* [Vim](#vim)
-* [VSCode](#vscode)
-* [Webpack](#webpack)
-* [Workflow](#workflow)
+* [Javascript](#javascript)
+
 
 ---
 
-### Ack
+### Javascript
 
 - [ack --bar](ack/ack-bar.md)
-- [Case-Insensitive Search](ack/case-insensitive-search.md)
-- [List Available File Types](ack/list-available-file-types.md)
+
