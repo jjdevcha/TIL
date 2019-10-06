@@ -16,5 +16,5 @@ variety of languages and technologies.
 
 ### Javascript
 
-- [TIL.js](ack/ack-bar.md)
+- [TIL.js](javascript/til.js)
 
