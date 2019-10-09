@@ -17,9 +17,10 @@ variety of languages and technologies.
 
 ### Javascript
 
-- [TIL.js](javascript/til.js)
+- [object, prototype](javascript/object_prototype.js)
 
 ### ReactJs
 
+- [component, jsx](ReactJs/ReactJs.txt)
 
 
