@@ -1,5 +1,5 @@
 
-## component
+## Component
 A function that returns HTML 
 #### How does it look?
 `<function name />`
