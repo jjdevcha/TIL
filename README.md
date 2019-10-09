@@ -21,6 +21,6 @@ variety of languages and technologies.
 
 ### ReactJs
 
-- [component, jsx](ReactJs/ReactJs.txt)
+- [component, jsx](ReactJs/Component_JSX.md)
 
 
