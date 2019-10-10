@@ -11,7 +11,7 @@ variety of languages and technologies.
 
 * [Javascript](#javascript)
 * [ReactJs](#reactjs)
-* [Algorithm practice](#algorithm_practice)
+* [Algorithm practice](#algorithm practice)
 
 
 ---
