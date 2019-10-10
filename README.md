@@ -11,6 +11,7 @@ variety of languages and technologies.
 
 * [Javascript](#javascript)
 * [ReactJs](#reactjs)
+* [Algorithm practice](#algorithm_practice)
 
 
 ---
@@ -22,5 +23,9 @@ variety of languages and technologies.
 ### ReactJs
 
 - [component, jsx](ReactJs/Component_JSX.md)
+
+### Algorithm practice
+
+- [Solving problems](Algorithm/solve.js)
 
 
