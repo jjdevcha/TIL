@@ -25,6 +25,7 @@ variety of languages and technologies.
 - [component, jsx](ReactJs/Component_JSX.md)
 
 ### Algorithm
+Algorithms that I've solved.
 
 - [Solving problems](Algorithm/solve.js)
 
