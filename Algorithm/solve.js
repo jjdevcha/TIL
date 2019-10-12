@@ -200,6 +200,107 @@ function sumOnMultiplicationOfPairs(...array) {
   return result;
 }
 
+/*
+숫자가 주어졌을때, threeFiveMultiples(num) 함수는 해당 숫자보다 
+작은 3 혹은 5의 배수들의 총합을 반환합니다.
+예시: 만약 10이 주어졌다면, 10 보다 작은 3과 5의 배수들은 3, 5, 6, 9 가 있으며 
+해당 숫자들을 모두 더하면 23 이 나오므로 여러분이 작성하진 함수는 23 을 반환해야 합니다.
+*/
+
+// My 
+
+function threeFiveMultiples(num) {
+  // 3의 배수 누적 더하기 결과값
+  // 5의 배수 누적 더하기 결과값
+  // 두개 더하기
+  // 해보기 두개 같이 해도 되더라 
+  let result = 0;
+  for(let i = 1; i < num; i++) {
+    if(i % 3 === 0 || i % 5 === 0) {
+      result += i;
+    }
+  }
+  return result;
+}
+
+// Model 
+// Exactly same with my solution
+
+
+/**
+ 문자열이 주어졌을때, runLength(str) 함수는 Run-length 인코딩 알고리즘을 사용하여 주어진 문자열을 압축하여 반환합니다.
+해당 알고리즘은 반복되는 글자가 있을경우 반복되는 수와 해당 글자를 조합하여 문자열을 압축시킵니다.
+예시: wwwggopp 는 3w2g1o2p 로 압축됩니다. 주어지는 문자열은 숫자나, 구두점이나, 문자를 포함하고 있지 않습니다.
+ */
+
+// My 
+// 처음에 생각했던 솔루션 
+// 근데 이 솔루션은 스트링 전체에서 해당 문자가 몇개 인지 검사해 나타내주는 거기 때문에
+// 인코딩 알고리즘에 적합하지 않음 
+function runLength(str) {
+  let strArr = str.split("");
+  let obj = {}, result = "";
+  
+  
+  strArr.forEach(cur => {
+    obj[cur] = ++obj[cur] || 1;
+  })
+
+  for(let key in obj) {
+     result += (obj[key] + key);
+  }
+
+  return result;
+}
+
+// My second solution 
+
+function runLength(str) {
+  let strArr = str.split("");
+  let result = "", count = 1;
+
+  
+  strArr.forEach((cur, i) => {
+      if(cur === strArr[i+1]) {
+        ++count;
+      }else {
+        result += count + cur;
+        count = 1;
+      }
+    })
+
+  return result;
+}
+
+runLength("EDNSOEQTWVOQQVDVRC") //"1E1D1N1S1O1E1Q1T1W1V1O2Q1V1D1V1R1C"
+
+// Model
+// 겁나 비효율적 ^^ 복잡도 O(n**2) 누가 만들었냐 ^^ 
+
+function runLength(str) {
+  var i = 0;
+  var rle = "";
+  while (i < str.length) {
+    var c = str[i];
+    var j = i + 1;
+    var compressed = [1, c];
+
+    while (j < str.length) {
+      if (str[j] === c) {
+        compressed[0] += 1;
+      } else {
+        break;
+      }
+      j++;
+    }
+
+    rle += compressed.join('');
+    i = j;
+  }
+
+  return rle;
+}
+
 
 
 
