@@ -16,3 +16,8 @@ let ninjaCat = Object.create(protoCat);
 ninjaCat.type = "ninja";
 ninjaCat.speak('FLEXxxxx');
 ```
+`.__proto__` can be used similarly with `Object.create()`. But it's no longer recommended.
+```js
+let ninjaCat = {};
+ninjaCat.__proto__ = protoCat;
+```
