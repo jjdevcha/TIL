@@ -427,6 +427,170 @@ function numberSearch(str) {
   return Math.round(numSum/strCnt);
 }
 
+/*
+숫자로 이루어진 배열이 주어졌을때, superIncreasing(arr) 함수는 해당 배열이 superIncreasing 조건을 
+만족하는지 반환합니다. 배열의 모든 요소들이 해당 요소들 앞에 있는 요소들 전체의 합보다 크면 superIncreasing 
+조건을 만족하는 배열이라 할 수 있습니다.
+(예시: 만약 주어진 배열이 [1, 3, 6, 13, 54] 라면 superIncreasing 
+  조건에 만족하기 때문에 여러분의 함수는 true를 반환해야 합니다. 
+  만약 superIncreasing 조건에 만족하지 않는다면 여러분의 함수는 false를 반환해야 합니다.)
+*/
+
+// My
+// 처음에 문제를 잘못이해해서, 모든 엘리먼트가 자신의 바로앞 엘리먼트보다 크면 true를 반환하게 설게 
+
+function superIncreasing(arr) {
+  let resultArr =[]
+  for(let i = 1; i < arr.length; i++) {
+    if(arr[i-1] < arr[i]) {
+      resultArr.push(true);
+    }else {
+      resultArr.push(false);
+    }
+  }
+
+  return resultArr.every(cur => cur === true);
+}
+
+// 수정한 sol 
+
+function superIncreasing(arr) {
+
+  let resultArr = [];
+  
+  function addFunc(a, c) {
+    return a + c;
+  }
+
+  for(let i = 1; i < arr.length; i++) {
+    if(arr[i] > arr.slice(0,i).reduce(addFunc)) {
+      resultArr.push(true);
+    }else {
+      resultArr.push(false);
+    }
+  }
+  return resultArr.every(cur => cur === true);
+}
+
+// Model
+// 합보다 크기가 작기만 하면 바로 false를 반환하기때문에
+// 내 솔루션처럼 리스트 저장이 불필요, 더 간단 
+function superIncreasing(arr) {
+  let sum = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] <= sum) {
+      return false;
+    }
+    sum = sum + arr[i];
+  }
+  return true;
+}
+
+/*
+양의 정수가 주어졌을때, multiplicativePersistence(num) 함수는 주어진 수의 각 자리의 숫자를 곱했을때 
+한 자릿수가 될때까지의 계산 횟수를 반환합니다.
+예시: 만약 입력값이 39라면, 여러분의 함수는 3을 반환해야 합니다.
+왜냐하면
+3 * 9 = 27
+그리고 2 * 7 = 14
+그리고 마지막으로 1 * 4 = 4 이므로 한 자리가 될 때까지 총 3번의 계산을 하기 때문입니다.
+*/
+
+// My 
+
+function multiplicativePersistence(num) {
+  // while 반복문 안에서 계산, 한자리 숫자가 되면 탈출
+  // count 있어야 됨. 이게 리터값
+  let count = 0 ;
+  while(num > 10) {
+
+    num = String(num).split('').reduce((a,c) => a * c);
+    count ++;
+  }
+  
+  return count;
+}
+
+// Model 
+
+function multiplicativePersistence(num) {
+  let count = 0;
+  num = String(num);
+  while (num.length >= 2) {
+    count += 1;
+    num = '' + num.split('').reduce(function(total, n) {
+      return total * n;
+    });
+  }
+  return count;
+}
+
+/*
+Have the function primeMover(n) return the n-th prime number. 
+The range will be from 1 to 5 * 10^4; (숫자(n)가 주어졌을때, 
+'primeMover(n)' 함수는 num 번째 소수를 반환합니다. 범위는 1에서 50,000 입니다.)
+For example: if n is 16 the output should be 53 as 53 is the 16th prime number. 
+(예시: 만약 n 이 16이라면, 결과값은 16번째 소수인 53 입니다.)
+*/
+
+// My 
+
+let primeMover = function(n) {
+  // Storing prime Number
+  let primeNumArr = [];
+
+  // function that checks primeNumber
+  function checkPrime(num) {
+    if(num <= 1) return false;
+
+    if(num % 2 === 0) {
+      return num === 2 ? true : false;
+    }
+    for(let i = 3; i <= Math.sqrt(num); i += 2) {
+      if(num % i === 0) return false;
+    }
+
+    return true;
+  }
+  
+  // Putting prime number in the Array
+  for(let j = 1; j <= 5*10**4; j++){
+    if(checkPrime(j) === true) {
+      primeNumArr.push(j);
+    }
+  }
+
+  // return nth Prime Number
+  return primeNumArr[n-1];
+}
+
+// Model
+// 그때 그때 count를 해서 따로 저장공간을 만들지 않았음 
+
+let isPrime = function(n) {
+  if (n < 2) {
+    return false;
+  }
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+let primeMover = function(num) {
+  num = Number(num);
+  let count = 0;
+  let n = 0;
+  while (count !== num) {
+    n += 1;
+    if (isPrime(n)) {
+      count += 1;
+    }
+  }
+  return n;
+}
 
 
 
