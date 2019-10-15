@@ -592,5 +592,118 @@ let primeMover = function(num) {
   return n;
 }
 
+/*
+An isogram is a word that has no repeating letters, consecutive or non-consecutive. 
+(isogram 은 이어져 있든 이어져있지 않든 같은 문자가 반복되지 않는 단어를 말합니다.) 
+Implement a function that determines whether a string that contains 
+only letters is an isogram. (문자열이 주어졌을때, 해당 문자열이 isogram 인지 확인해주는 함수를 작성하세요.)
+Assume the empty string is an isogram. Ignore letter case. 
+(빈 문자열은 isogram 으로 간주합니다. 대소문자는 무시하세요.)
+*/
+
+// My 
+
+let isIsogram = function(str) {
+  let obj = {};
+  
+  // 다 소문자로 변경
+  str = str.toLowerCase();
+
+  // 스트링 돌아가면 나온 알파벳 수를 오브젝트에 저장
+  str.split('').forEach(cur => {
+    obj[cur] = ++obj[cur] || 1;
+  })
+
+  // 하나라도 obj[key] 값이 2이상이면 false
+  for(key in obj) {
+    if(obj[key] > 1) {
+      return false
+    }
+  }
+
+  return true;
+}
+
+// Model
+// storage를 똑같이 만들지만, 키를 넣어주는 과정에서 두번이상 호출이 되면 바로 false 리턴
+// 더효율적 
+
+let isIsogram = function(str) {
+  if(str.length === 0) {
+    return true;
+  }
+
+  let storage = {};
+  let strLowerCase = str.toLowerCase();
+
+  for(let i = 0; i < strLowerCase.length; i++) {
+    if(storage[strLowerCase[i]]) {
+      return false;
+    }
+    storage[strLowerCase[i]] = 1;
+  }
+
+  return true;
+}
+
+/*
+letterCapitalize(str)는 문자열을 parameter로 받는 함수로, 
+문자열의 각 단어의 첫번째 글자를 대문자로 만듭니다.
+단어는 하나의 공백으로 구분됩니다.
+*/
+
+// My
+function letterCapitalize(str) {
+  // 스트링을 리스트에 넣어주기 
+  let strToArr = str.split('');
+
+  // 스트링 돌아가며 가장 첫인덱스나, 자신의 인덱스 바로 앞 인데스가 공백이면 대문자로 바꿔주기
+  strToArr.forEach((cur, i) => {
+    if(i === 0 || strToArr[i-1] === " ") {
+      strToArr[i] = cur.toUpperCase(); //.toUpperCase()는 immutable이기 때문에 저장을 꼭 하기
+    }
+  })
+  return strToArr.join('');
+}
+
+letterCapitalize('mond');
+
+// Model 
+// split을 단어별로 해서 더 간단하게 풀어냄!
+function letterCapitalize(str) {
+  let words = str.split(' ');
+
+  for(let i = 0; i < words.length; i++){
+    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+  }
+
+  str = words.join(' ');
+
+  return str;
+}
+
+/*
+powerOfTwo (num) 함수는 num parameter를 가져와서 정수이며, 동시에 2의 거듭제곱이면 true를 반환합니다.
+JavaScript 언어의 내장 메소드를 사용하여 구현할 수 있습니다.
+*/
+
+// My 
+function powerOfTwo(num) {
+  // 정수인지 체크, 2의 거듭제곱인지 체크
+  // 둘다 만족하면 트루 리턴
+
+  if(num === 2) return true;
+  else if(num % 2 === 1 || num != Math.round(num)) return false
+  else return powerOfTwo(num / 2);
+}
+
+
+// Model
+// 아름답다...
+// 로그 다 까먹었는데 .... 흑
+// 수학 공부를 다시 해야되나 ^^.....
+function powerOfTwo(num) {
+  return Number.isInteger(Math.log2(num));
+}
 
 
