@@ -706,4 +706,126 @@ function powerOfTwo(num) {
   return Number.isInteger(Math.log2(num));
 }
 
+/*
+In this exercise, you are required to, given a string, 
+replace every letter with its position in the alphabet. 
+(문자열이 주어졌을때, 각각의 문자를 알파벳의 몇번째 인지 숫자로 바꾸는 함수를 작성하세요.) 
+If anything in the text isn't a letter, ignore it and don't return it. 
+a being 1, b being 2, etc. (만약 문자가 알파벳이 아니라면, 무시하고 결과값에 포함하지 마세요. 
+a 는 1, b 는 2, 등등 으로 변환됩니다.)
+alphabetPosition("The sunset sets at twelve o' clock."); 
+// "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
+*/
+
+// My
+
+var alphabetPosition = function(str) {
+  // str을 모두 소문자로 만들것
+  // str을 리스트에 넣은뒤 돌아가며 알파벳인지 검사
+  // 알파벳이라면 아스키코드 이용해서 숫자로 변환하고 새로운 리스트에 넣기
+  // 리스트 리턴할 때 공백 넣어서 조인으로 리턴
+  let alpToNum = [];
+  let alphabet = /[a-z]/g;
+
+  str = str.toLowerCase();
+  
+  str.split('').forEach(cur => {
+    if(cur.match(alphabet)) {
+      alpToNum.push(cur.charCodeAt() - 96);
+    }
+  })
+  
+  return alpToNum.join(' ');
+}
+
+// Model
+
+function alphabetPosition(string) {
+  let chars = 'abcdefghijklmnopqrstuvwxyz'.split('')
+
+  string = string.toLowerCase();
+
+  let charArr = string.split('')
+
+  return charArr.map(function(char) {
+    return chars.indexOf(char) + 1
+  }).filter(function(position) {
+    return position !== 0;
+  }).join(' ')
+
+}
+
+/*
+Have the function DashInsert insert dashes ('-') between each two odd numbers in str. 
+(문자열이 주어졌을때, 'DashInsert' 함수는 문자열에 있는 두 홀수 사이에 대시('-')를 추가하여 반환합니다.)
+DashInsert('454793'); // "4547-9-3"
+*/
+
+// My 
+
+function DashInsert(string) {
+  // split the string into the list
+  // check if the odd num is next to eachother
+  // if it is, add '-' inside the current index 
+
+  let strArr = string.split('');
+
+  strArr.forEach((cur,i) => {
+    if(cur % 2 === 1 && strArr[i+1] % 2 === 1) {
+      strArr[i] = cur + '-';
+    }
+  })
+
+  return strArr.join('');
+}
+
+// Model
+// how does string[i] % 2 work? 
+// because 1 is true and 0 is false? 
+function DashInsert(string) {
+  let result = '';
+
+  for (let i = 0; i < string.length; i++) {
+    result = result + string[i];
+    
+    if (string[i] % 2 && string[i + 1] % 2) {
+      result = result + '-';
+    }
+  }
+
+  return result;
+}
+
+/*
+Using the JavaScript language, 
+have the function LongestWord take the sen parameter being passed and return the largest word in the string. 
+(문장이 주어졌을때, 'LongestWord' 함수는 주어진 문장에서 가장 긴 단어를 반환합니다.)
+If there are two or more words that are the same length, 
+return the first word from the string with that length. 
+Assume sen will not be empty. 
+(만약 가장 긴 단어가 두개 이상이라면, 첫번째로 등장하는 가장 긴 단어를 반환하세요. 문장은 빈 문자열이 아닙니다.)
+longestWord("I love codestates"); // => "codestates"
+*/
+
+// My 
+function longestWord(string) {
+  // Put strings in the list and sort with length(longest -> shortest)
+  // return the 0 index of the list
+
+  return string.split(' ').sort((a,b) => b.length - a.length)[0];
+}
+
+// Model
+function longestWord(string) {
+  let words = string.split(' ');
+  
+  return words.reduce(function(acc, curr) {
+    if (acc.length < curr.length) {
+      return curr
+    }
+    return acc
+  }, '')
+}
+
+
 
