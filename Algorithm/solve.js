@@ -827,5 +827,117 @@ function longestWord(string) {
   }, '')
 }
 
+/*
+In this exercise, a string is passed to a method and a new string has to be returned 
+with the first character of each word in the string 
+(문자열이 주어졌을때, "firstCharacter" 함수는 문자열의 각 단어 첫글자들로 이루어진 문자열을 반환하여야 합니다.)
+*/
+
+// My
+
+function firstCharacter (string) {
+  // split string in to array
+  // use map to get the 0 index of each element
+  // join it into a string
+
+  let newStr = string.split(' ').map(cur => cur[0]).join('');
+  return newStr;
+}
+
+// Model
+
+function firstCharacter(string) {
+  let words = string.split(' ');
+  let result = '';
+  for (let i = 0; i < words.length; i += 1) {
+    result = result + words[i][0];
+  }
+  return result;
+}
+/*
+convert nested (2-dimensional) array to flatten array! (2차원 배열을 1차원 배열로 전환하세요.)
+*/
+
+// My 1st 
+
+function flatten (array){
+
+  return String(array).split(',').filter(cur => parseInt(cur, 10)).map(cur => Number(cur));
+}
+
+// My 2nd
+// Jesus... I totally forgot about concat
+
+function flatten (array){
+  array = array.filter(el => el.length !== 0);
+
+  array.forEach((el, i) => {
+
+    if(Array.isArray(el)) {
+      
+      if(el[0] === null) {
+        array[i] = null;
+      } else if (el.includes(true) || el.includes(false)) {
+        el.forEach(el2 => array.push(el2));
+        array.splice(i,1);
+      } else { 
+        if (parseInt(el[0], 10)) {
+          array[i] = parseInt(String(el[0]), 10);
+        } else {
+          array[i] = String(el);
+        }
+
+      }
+      
+    }
+
+  });
+
+  return array;
+}
+
+// Model
+
+function flatten (array){
+  return array.reduce(function(acc, curr) {
+    return acc.concat(curr);
+  }, []);
+}
+
+/*
+Find out "B"(Bug) in a lot of "A"(Apple). (수많은 "A"(Apple) 사이에서 "B"(Bug)를 찾으세요.)
+There will always be one bug in apple, not need to consider the situation 
+that without bug or more than one bugs. 
+(사과(apple) 사이에는 언제나 항상 한개의 벌레(bug)가 있으므로 
+벌레가 없는 경우나 한개 이상인 경우는 고려하지 않으셔도 됩니다.)
+Note: 2-dimesional Array will be input. (노트: 2차원 배열이 매개변수로 주어집니다.)
+*/
 
 
+// My 
+let bugInApple = function(array) {
+  // loop array find the element that includes 'b'
+  // find the 'b' index
+  // return an new array [element index, b index]
+
+  let result = [];
+  array.forEach((el, i) => {
+    if(el.includes("B")) {
+      result.push(i);
+      const bIndex = el.findIndex(cur => cur === "B");
+      result.push(bIndex);
+    }
+  });
+  return result;
+}
+
+// Model
+let bugInApple = function(apple) {
+  for (let i = 0; i < apple.length; i += 1) {
+    for (let j = 0; j < apple[i].length; j += 1) {
+      if (apple[i][j] === 'B') {
+        return [i, j];
+      }
+    }
+  }
+}
