@@ -941,3 +941,120 @@ let bugInApple = function(apple) {
     }
   }
 }
+
+/*
+Using the JavaScript language, 
+have the function firstReverse(str) take the str parameter 
+being passed and return the string in reversed order. 
+(firstReverse(str) 함수를 작성하세요. 문자열(str)이 주어졌을때, 
+firstReverse(str) 함수는 주어진 문자열을 역순으로 반환합니다.)
+*/
+
+// My 
+
+function firstReverse(str) {
+  
+  let newStr = "";
+
+  for(let i = str.length - 1; i >= 0; i--) {
+    newStr += str[i];
+  }
+
+  return newStr;
+}
+
+// Model
+
+function firstReverse(str) {
+  return str.split('').reverse().join('');
+}
+
+/*
+Using the JavaScript language, have the function ABCheck(str) 
+take the str parameter being passed and return the true 
+if the characters a and b are separated by exactly 3 places 
+anywhere in the string at least once Otherwise return the false. 
+(ABCheck(str) 함수를 작성하세요. 문자열(str)이 주어졌을때, 
+ABCheck(str) 주어진 문자열에서 함수는 문자 a 와 b 사이가 문자열 안에서 한번이라도 
+정확히 3글자 떨어져 있으면 true를 반환하고 그렇지 않은 경우는 모두 false 를 반환합니다.)
+For example, lane Borrowed would result in true because 
+there is exactly three characters between a and B 
+(예를들어, lane Borrowed 문자열은 a 와 B 사이가 정확히 3글자 떨어져 있으므로 true 를 반환하게 됩니다.)
+You should consider about space and capital character. (문자 사이의 공백도 한글자로 취급하며, 
+대문자 A와 B도 소문자와 동일하게 생각해주셔야합니다.)
+Please Note: you have to take care of undefined input case 
+(노트: undefined 를 매개변수로 넣는 케이스도 고려하셔야 합니다.)
+*/
+
+// 1st solution
+// It's not perfect since findIndex only catches the first element that satisfies the condition
+
+function ABCheck(str) {
+  str = str.toLowerCase();
+  const aIndex = str.split('').findIndex(cur => cur === 'a');
+  const bIndex = str.split('').findIndex(cur => cur === 'b');
+
+  if(Math.abs(aIndex - bIndex) === 4) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+ABCheck('lane Borrowed');
+
+// 2nd My
+
+function ABCheck(str) {
+  // loop the str and make 2 arrays
+  // 1 containing 'a' indexes
+  // the other containing 'b' indexes
+  // loop those 2 arrays and return true
+  // if the Math.abs of the indexes is 4
+  if(str === undefined) return false;
+
+  let count = 0;
+  let aIndex = [];
+  let bIndex = [];
+
+  str.toLowerCase().split('').forEach((cur, i) => {
+    if(cur === 'a') aIndex.push(i);
+    else if(cur === 'b') bIndex.push(i);
+  });
+
+  console.log(aIndex);
+  console.log(bIndex);
+
+  for(let i = 0; i < aIndex.length; i++) {
+    for(let j = 0; j < bIndex.length; j++) {
+      if(Math.abs(aIndex[i] - bIndex[j]) === 4) {
+        count++;
+      }
+    }
+  }
+
+  if(count > 0) {
+    return true;
+  }else {
+    return false;
+  }
+}
+
+// Model
+
+function ABCheck(str) {
+  if(str === undefined) {
+    return false;
+  }
+
+  str = str.toLowerCase();
+
+  for (let i = 0; i < str.length; i += 1) {
+    if ((str[i] === 'a' && str[i + 4] === 'b') || (str[i] === 'b' && str[i + 4] === 'a')) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
