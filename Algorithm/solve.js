@@ -1058,3 +1058,33 @@ function ABCheck(str) {
   return false;
 }
 
+/*
+Given a positive integer num, 
+return the sum of all odd Fibonacci numbers that are less than or equal to num.
+The first two numbers in the Fibonacci sequence are 1 and 1. 
+Every additional number in the sequence is the sum of the two previous numbers. 
+The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
+For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
+*/
+
+function sumFibs(num) {
+  // num 이하의 피보나치 수열 배열을 만듧
+  // 그 배열에서 홀수 만 더해서 리턴
+  function f(n) {
+    if(n === 0) {
+        return 0;
+    }else if(n === 1){
+        return 1;
+    }else{
+        return f(n-1) + f(n-2);
+    }
+}
+  for(let j = 0; j < fibs.length; j++) {
+    if(fibs[j] % 2 != 0) {
+      result += fibs[j];
+    }
+  }
+  
+  return result;
+}
+
