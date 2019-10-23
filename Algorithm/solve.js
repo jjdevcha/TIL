@@ -1156,4 +1156,23 @@ function smallestCommons(arr) {
 return result;
 }
 
+/*
+Recursion
+- Zero is even
+- One is odd
+- For any other number N, its evenness is the same as N - 2
+*/
+
+// My 
+
+function isEven(num) {
+  if(num === 0) {
+      return "even";
+  }else if(num === 1){
+      return "odd";
+  }else {
+      return isEven(num - 2);
+  }
+}
+
 
