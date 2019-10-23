@@ -1067,24 +1067,93 @@ The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
 For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
 */
 
+// My 
 function sumFibs(num) {
   // num 이하의 피보나치 수열 배열을 만듧
   // 그 배열에서 홀수 만 더해서 리턴
-  function f(n) {
-    if(n === 0) {
-        return 0;
-    }else if(n === 1){
-        return 1;
-    }else{
-        return f(n-1) + f(n-2);
+  let result = 0;
+  let fibs = [1, 1];
+  for(let i = 2; i <= num; i++) {
+      fibs.push(fibs[i-1] + fibs[i-2]);
     }
-}
-  for(let j = 0; j < fibs.length; j++) {
-    if(fibs[j] % 2 != 0) {
-      result += fibs[j];
-    }
-  }
+
+  fibs.forEach(cur => {
+      if(cur <= num && cur % 2 != 0) {
+          result += cur;
+      }
+  })
   
   return result;
 }
+
+/*
+Sum all the prime numbers up to and including the provided number.
+A prime number is defined as a number greater than one and having only two divisors, 
+one and itself. For example, 2 is a prime number because it's only divisible by one and two.
+The provided number may not be a prime.
+*/
+
+// My
+
+function sumPrimes(num) {
+  let result = 0;
+
+  function checkPrime(n) {
+      if(n < 2) {
+          return false;
+      }
+      for(let i = 2; i < n; i++) {
+          if(n % i === 0) return false
+      }
+      return true;
+  }
+
+  for(let j = 2; j <= num; j++) {
+      if(j <= num && checkPrime(j) === true) {
+          result += j;
+      }
+  }
+
+  return result;
+
+}
+
+/*
+Find the smallest common multiple of the provided parameters 
+that can be evenly divided by both, 
+as well as by all sequential numbers in the range between these parameters.
+The range will be an array of two numbers that will not necessarily be in numerical order.
+For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also
+evenly divisible by all numbers between 1 and 3. The answer here would be 6.
+*/
+// Model solutions are so fk hard
+
+// My
+
+function smallestCommons(arr) {
+  arr.sort((a, b) => a - b);
+  const minNum = arr[0];
+  const maxNum = arr[1];
+  const lcm = (minNum * maxNum) / gcd(minNum, maxNum);
+  let result = lcm; 
+
+  // 최대공약수
+
+  function gcd(minNum, maxNum){
+      return (minNum % maxNum) === 0 ? maxNum : gcd(maxNum, minNum % maxNum);
+  }
+
+ 
+  for(let i = maxNum - 1; i > minNum; i--) {
+      if(gcd(i, result) === 1) {
+          result *= i;
+      }else {
+          result *= i / gcd(i, result);
+      }
+  }    
+  
+  
+return result;
+}
+
 
