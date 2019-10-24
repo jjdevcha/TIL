@@ -21,3 +21,5 @@ console.log(Number.isNaN(a)) // true
 console.log(Number.isNaN('a')) // false
 ```
 이렇게 하게 되면 검사 시 내가 건드리고 싶지 않은 `String`이라든가 `Number`이 아닌 다른 타입들이 `true`가 나오는 것을 방지할 수 있다. 
+
+[Good reference for this](https://dev.to/samanthaming/better-nan-check-with-es6-number-isnan-19g0)
