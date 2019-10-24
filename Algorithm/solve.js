@@ -1175,4 +1175,165 @@ function isEven(num) {
   }
 }
 
+/*
+Given the array arr, iterate through and remove each element 
+starting from the first element (the 0 index) until the function func 
+returns true when the iterated element is passed through it.
+Then return the rest of the array once the condition is satisfied, 
+otherwise, arr should be returned as an empty array.
+*/
 
+// My 
+
+function dropElements(arr, func) {
+  
+  for(let i = 0; i < arr.length; i++) {
+      if(func(arr[i])) {
+          return arr.slice(i);
+      }
+  }
+  return [];
+}
+
+// Model
+// So gorgeous
+
+function dropElements(arr, func) {
+  return arr.slice(arr.findIndex(func) >= 0 ? arr.findIndex(func) : arr.length);
+}
+
+// test here
+dropElements([1, 2, 3, 4], function(n) {
+  return n >= 3;
+});
+
+/*
+Flatten a nested array. You must account for varying levels of nesting.
+*/
+
+// My
+function steamrollArray(arr) {
+  // I'm a steamroller, baby
+  return arr.flat(Infinity);
+}
+
+// Model
+
+// Using concat and recursion
+
+function steamrollArray(arr) {
+  let flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+}
+
+// Using some and flat
+
+function steamrollArray(arr) {
+  while (arr.some(element => Array.isArray(element))) {
+    arr = arr.flat();
+  }
+  return arr;
+}
+
+/*
+Return an English translated sentence of the passed binary string.
+The binary string will be space separated.
+*/
+
+// My
+// Remeber to convert string to parseInt(num, 2) with radix 2, not using Number
+
+function binaryAgent(str) {
+
+  let binaryNums = str.split(' ').map(cur => parseInt(cur, 2));
+  
+  return binaryNums.map(cur => String.fromCharCode(cur)).join('');
+}
+
+// Model
+
+function binaryAgent(str) {
+  return String.fromCharCode(
+    ...str.split(" ").map(function(char) {
+      return parseInt(char, 2);
+    })
+  );
+}
+
+/*
+*/
+
+// My
+function truthCheck(collection, pre) {
+  // loop trough objects with for in
+  //check if object[pre] is truthy
+
+  function checkTruthy(el) {
+      if(el === false ||
+        el === null ||
+        el === 0 ||
+        el === undefined ||
+        el === '' ||
+        Number.isNaN(el) === true) {
+            return false;
+        }
+        return true;
+  }
+   
+  return collection.every(obj => checkTruthy(obj[pre]) === true);
+  
+}
+
+// Model
+// Didn't know Boolean will be checking truthy and falsy
+
+function truthCheck(collection, pre) {
+  // Create a counter to check how many are true.
+  var counter = 0;
+  // Check for each object
+  for (var c in collection) {
+    // If it is has property and value is truthy
+    if (collection[c].hasOwnProperty(pre) && Boolean(collection[c][pre])) {
+      counter++;
+    }
+  }
+  // Outside the loop, check to see if we got true for all of them and return true or false
+  return counter == collection.length;
+}
+
+// test here
+truthCheck(
+  [
+    { user: "Tinky-Winky", sex: "male" },
+    { user: "Dipsy", sex: "male" },
+    { user: "Laa-Laa", sex: "female" },
+    { user: "Po", sex: "female" }
+  ],
+  "sex"
+);
+
+// Sexy model solution using every, hasOwnProperty, Boolean
+
+function truthCheck(collection, pre) {
+  return collection.every(function(element) {
+    return element.hasOwnProperty(pre) && Boolean(element[pre]);
+  });
+}
+
+// test here
+truthCheck(
+  [
+    { user: "Tinky-Winky", sex: "male" },
+    { user: "Dipsy", sex: "male" },
+    { user: "Laa-Laa", sex: "female" },
+    { user: "Po", sex: "female" }
+  ],
+  "sex"
+);
+
+// Actually you don't even have to check
+
+function truthCheck(collection, pre) {
+  // Is everyone being true?
+  return collection.every(obj => obj[pre]);
+}
