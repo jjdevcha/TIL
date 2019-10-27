@@ -1466,3 +1466,189 @@ function orbitalPeriod(arr) {
 
 // Model
 // similar with mine
+
+/*
+Return true if the given string is a palindrome. Otherwise, return false.
+A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.
+*/
+
+// My 
+// Obviously I didn't need to seperate odds and evens 
+// because eventually the checking process is same
+// DUMB
+
+function palindrome(str) {
+
+  let checkTrue = 0;
+  // unify the form
+  str = str.toLowerCase().replace(/[\W_]/g, '');
+  console.log(str);
+  
+  // seperate the case of length odd and even
+  
+  // when it's odd
+  if(str.length % 2) {
+    
+    for(let i = 0; i < (str.length - 1) / 2; i++) { 
+
+      if(str[i] === str[str.length - 1 - i]) {
+         checkTrue++;
+      }
+    }
+    if(checkTrue === (str.length - 1) / 2) {
+      return true;
+    }
+  } else { // when it's even
+    for(let i = 0; i < str.length / 2; i++) {
+      if(str[i] === str[str.length - 1 - i]) {
+        checkTrue++;
+      }
+    }
+
+    if(checkTrue === str.length / 2) {
+      return true
+    }
+  }
+  return false;
+  //return true;
+}
+
+
+
+palindrome("eye");
+palindrome("racecar"); 
+palindrome("2a33a2"); 
+
+// Model
+// FUCKKKK
+// Whey didn't I think of reverse haha
+function palindrome(str) {
+  return (
+    str.replace(/[\W_]/g, "").toLowerCase() ===
+    str
+      .replace(/[\W_]/g, "")
+      .toLowerCase()
+      .split("")
+      .reverse()
+      .join("")
+  );
+}
+
+/*
+Convert the given number into a roman numeral.
+*/
+
+// My 1st solution
+// Too long, gave up 
+
+function convertToRoman(num) {
+  
+  let romanNum = "";
+  
+  function units(n) {
+
+    if(n === 4) {
+      return "IV";
+    }else if (n === 9) {
+      return "IX";
+    }else if (n === 1) {
+      return "I";
+    }else if (n === 5) {
+      return "V";
+    }else if (n > 1 && n < 4) {
+      const times = n;
+      return "I".repeat(times);
+    }else if (n > 5 && n < 9) {
+      const times = n - 5;
+      return "V" + "I".repeat(times);
+    }
+  }
+
+ return romanNum + baseNum(num);
+}
+
+// My 2nd solution 
+
+function convertToRoman(num) {
+
+  let romanResult = "";
+
+  // Check Number
+  const nums = [4, 9, 1, 5, 2, 3, 6, 7, 8, 0];
+
+  // Units
+  const romUnits = ["IV", "IX", "I", "V", "II", "III", "VI", "VII", "VIII", ""];
+  // Tens
+  const romTens = ["XL", "XC", "X", "L", "XX", "XXX", "LX", "LXX", "LXXX", ""];
+  // Hundreds
+  const romHun = ["DC", "CM", "C", "D", "CC", "CCC", "DC", "DCC", "DCCC", ""];
+  // Thousands
+  const romThou = ["M".repeat(4), "M".repeat(9), "M", "M".repeat(5), "MM", "MMM", "M".repeat(6), "M".repeat(7), "M".repeat(8), ""];
+
+  const numArr = String(num).split('').map(n => Number(n));
+
+  if(numArr.length === 4) {
+     
+    const firstIndex = nums.findIndex(n => n === numArr[0]);
+    const secondIndex = nums.findIndex(n => n === numArr[1]);
+    const thirdIndex = nums.findIndex(n => n === numArr[2]);
+    const fourthIndex = nums.findIndex(n => n === numArr[3]);
+
+    romanResult += romThou[firstIndex] + romHun[secondIndex] + romTens[thirdIndex] + romUnits[fourthIndex];
+
+  }else if(numArr.length === 3) {
+
+    const firstIndex = nums.findIndex(n => n === numArr[0]);
+    const secondIndex = nums.findIndex(n => n === numArr[1]);
+    const thirdIndex = nums.findIndex(n => n === numArr[2]);
+
+    romanResult += romHun[firstIndex] + romTens[secondIndex] +romUnits[thirdIndex];
+  }else if(numArr.length === 2) {
+
+    const firstIndex = nums.findIndex(n => n === numArr[0]);
+    const secondIndex = nums.findIndex(n => n === numArr[1]);
+
+    romanResult += romTens[firstIndex] + romUnits[secondIndex];
+  }else if(numArr.length === 1) {
+    
+    const firstIndex = nums.findIndex(n => n === numArr[0]);
+
+    romanResult += romUnits[firstIndex];
+  }
+
+  return romanResult;
+}
+
+// Model 
+
+var convertToRoman = function(num) {
+  var decimalValue = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+  var romanNumeral = [
+    "M",
+    "CM",
+    "D",
+    "CD",
+    "C",
+    "XC",
+    "L",
+    "XL",
+    "X",
+    "IX",
+    "V",
+    "IV",
+    "I"
+  ];
+
+  var romanized = "";
+
+  for (var index = 0; index < decimalValue.length; index++) {
+    while (decimalValue[index] <= num) {
+      romanized += romanNumeral[index];
+      num -= decimalValue[index];
+    }
+  }
+
+  return romanized;
+};
+
+
