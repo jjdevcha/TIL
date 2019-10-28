@@ -1568,7 +1568,7 @@ function convertToRoman(num) {
 }
 
 // My 2nd solution 
-
+// Hard coding...Total mess
 function convertToRoman(num) {
 
   let romanResult = "";
@@ -1620,7 +1620,7 @@ function convertToRoman(num) {
 }
 
 // Model 
-
+// 완전 신기방기
 var convertToRoman = function(num) {
   var decimalValue = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
   var romanNumeral = [
@@ -1651,4 +1651,76 @@ var convertToRoman = function(num) {
   return romanized;
 };
 
+convertToRoman(3999); 
 
+/*
+One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. 
+In a shift cipher the meanings of the letters are shifted by some set amount.
+A common modern use is the ROT13 cipher, 
+where the values of the letters are shifted by 13 places. Thus 'A' ↔ 'N', 'B' ↔ 'O' and so on.
+Write a function which takes a ROT13 encoded string as input and returns a decoded string.
+*/
+
+// My 
+function rot13(str) { // LBH QVQ VG!
+    
+  str = str.toUpperCase();
+
+  let result = "";
+
+  for(const alp of str) {
+    if(alp.charCodeAt() >= 65 && alp.charCodeAt() <= 90) {
+       if(alp.charCodeAt() < 78) {
+        result += String.fromCharCode(alp.charCodeAt() + 13);
+      }else {
+        result += String.fromCharCode(alp.charCodeAt() - 13);
+      } 
+    }else {
+      result += alp;
+    }
+  }
+
+  return result;
+}
+
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
+
+// Model
+function rot13(str) {
+  // LBH QVQ VG!
+  return str.replace(/[A-Z]/g, L =>
+    String.fromCharCode((L.charCodeAt(0) % 26) + 65)
+  );
+}
+
+/*
+Return true if the passed string looks like a valid US phone number.
+The user may fill out the form field any way they choose as long as it has the format of a valid US number. 
+The following are examples of valid formats for US numbers (refer to the tests below for other variants):
+555-555-5555
+(555)555-5555
+(555) 555-5555
+555 555 5555
+5555555555
+1 555 555 5555
+*/
+
+// My 
+function telephoneCheck(str) {
+  // Good luck!
+  const regExArr = [
+    /^(1||1 )\d{3}-\d{3}-\d{4}$/g,
+    /^(1||1 )\(\d{3}\)( |)\d{3}-\d{4}$/g,
+    /^(1||1 )\d{3} \d{3} \d{4}$/g,
+    /^(1||1 )\d{10}$/g
+  ]
+  return regExArr.some(check => check.test(str));
+}
+
+// Solution
+// 이건 괜찮긴한데 555555-5555 이런걸 못걸러냄
+function telephoneCheck(str) {
+  var regex = /^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/;
+  return regex.test(str);
+}
