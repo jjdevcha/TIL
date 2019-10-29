@@ -1724,3 +1724,131 @@ function telephoneCheck(str) {
   var regex = /^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/;
   return regex.test(str);
 }
+
+/*
+Write a function that splits an array (first argument) 
+into groups the length of size (second argument) and returns them as a two-dimensional array.
+*/
+
+// My
+function chunkArrayInGroups(arr, size) {
+
+  let resultArr = [];
+
+  arr.forEach((cur, i) => {
+    if(i % size === 0) {
+      resultArr.push(arr.slice(i, i + size));
+    }
+  })
+  return resultArr;
+}
+
+// Model
+// length가 남아있을 때까지 쳐낸다
+
+function chunkArrayInGroups(arr, size) {
+  var newArr = [];
+  while (arr.length) {
+    newArr.push(arr.splice(0, size));
+  }
+  return newArr;
+}
+
+// Model 2
+// Using  concat and recursion
+
+function chunkArrayInGroups(arr, size) {
+  if (arr.length <= size) {
+    return [arr];
+  } else {
+    return [arr.slice(0, size)].concat(
+      chunkArrayInGroups(arr.slice(size), size)
+    );
+  }
+}
+
+/*
+Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+The arguments ["hello", "hey"] should return false because the string "hello" does not contain a "y".
+Lastly, ["Alien", "line"], should return true because all of the letters in "line" are present in "Alien".
+*/
+
+// My
+
+function mutation(arr) {
+
+  const firstWord = arr[0].toLowerCase();
+  const secWord = arr[1].toLowerCase();
+
+  return secWord.split('').every(alp => 
+                firstWord.split('').includes(alp));
+}
+
+mutation(["hello", "hey"]);
+
+// Model 
+// Not very impressive
+
+/*
+Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. 
+The returned value should be a number.
+For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+Likewise, getIndexToIns([20,3,5], 19) should return 2 
+because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
+*/
+
+// My
+
+function getIndexToIns(arr, num) {
+  arr = arr.sort((a, b) => a - b);
+
+  for(let i = 0; i < arr.length; i++) {
+    if(num > arr[i] && num < arr[i+1]) {
+      return i+1;
+    }else if(arr[i] === num) {
+      return i;
+    }else if(arr[arr.length - 1] < num) {
+      return arr.length;
+    }
+  }
+
+  return 0;
+}
+
+getIndexToIns([40, 60], 50);
+
+// Model
+// 나 바보
+
+function getIndexToIns(arr, num) {
+  arr.sort(function(a, b) {
+    return a - b;
+  });
+
+  for (var a = 0; a < arr.length; a++) {
+    if (arr[a] >= num) return a;
+  }
+
+  return arr.length;
+}
+
+// Model 2
+// 천재? 
+function getIndexToIns(arr, num) {
+  arr.push(num);
+  arr.sort(function(a, b) {
+    return a - b;
+  });
+  return arr.indexOf(num);
+}
+
+// Model 3
+// 영롱 예뻐라
+
+function getIndexToIns(arr, num) {
+  return arr
+    .concat(num)
+    .sort((a, b) => a - b)
+    .indexOf(num);
+}
