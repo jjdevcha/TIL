@@ -1852,3 +1852,151 @@ function getIndexToIns(arr, num) {
     .sort((a, b) => a - b)
     .indexOf(num);
 }
+
+/*
+Have the function QuestionsMarks(str) take the str string parameter, 
+which will contain single digit numbers, letters, and question marks, 
+and check if there are exactly 3 question marks between every pair of two numbers that add up to 10. 
+If so, then your program should return the string true, otherwise it should return the string false. 
+If there aren't any two numbers that add up to 10 in the string, then your program should return false as well.
+For example: if str is "arrb6???4xxbl5???eee5" then your program should return true because there are exactly 3 question marks between 6 and 4, 
+and 3 question marks between 5 and 5 at the end of the string.
+*/
+
+// My 
+
+function QuestionsMarks(str) { 
+
+  // str split forEach
+  // if number, add to num 
+  // if ? in between nums store the count
+  // if num is 10, check the count
+  // for consecutive check num = 0, count = 0
+
+  let strArr = str.split('');
+  let numSum = 0;
+  let qCount = 0;
+  let res = 0;
+
+  strArr.forEach(el => {
+    if(Number.isInteger(parseInt(el))) {
+      numSum += parseInt(el);
+
+    }
+    if(numSum != 0 && el === '?') {
+      ++qCount;
+    }
+
+    if(numSum === 10 && qCount === 3) {
+      ++res;
+      numSum = 0;
+      qCount = 0;
+    }
+
+  });
+
+
+  return res > 0 ? true : false;
+
+}
+   
+QuestionsMarks("acc?7??sss?3rr1??????5"); // true
+
+/*
+Have the function ScaleBalancing(strArr) read strArr which will contain two elements, 
+the first being the two positive integer weights on a balance scale (left and right sides) 
+and the second element being a list of available weights as positive integers. 
+Your goal is to determine if you can balance the scale by using the least amount of weights from the list, 
+but using at most only 2 weights. For example: if strArr is ["[5, 9]", "[1, 2, 6, 7]"] 
+then this means there is a balance scale with a weight of 5 on the left side and 9 on the right side. 
+It is in fact possible to balance this scale by adding a 6 to the left side 
+from the list of weights and adding a 2 to the right side. 
+Both scales will now equal 11 and they are perfectly balanced. 
+Your program should return a comma separated string of the weights that were used from the list in ascending order, 
+so for this example your program should return the string 2,6
+*/
+
+function ScaleBalancing(strArr) { 
+
+  let scale = JSON.parse(strArr[0]).sort((a, b) => a - b);
+  let smallS = scale[0];
+  let bigS = scale[1];
+  let weights = JSON.parse(strArr[1]).sort((a, b) => a - b);
+  let scaleSub = smallS - bigS;
+  let res = [];
+
+  for(let i = 0; i < weights.length; i++) {
+    if(weights.includes(Math.abs(scaleSub))) {
+      return "" + Math.abs(scaleSub);
+    }else if(weights[i] + weights[i + 1] === Math.abs(scaleSub)) {
+      res.push(weights[i]);
+      res.push(weights[i + 1]);
+      break;
+    }else if(weights[i] - weights[i + 1] === scaleSub) {
+      res.push(weights[i]);
+      res.push(weights[i + 1]);
+      break;    
+    }
+  }
+
+//   weights.every((cur, i, a) => {
+//     if(cur === scaleSub) {
+//       res.push(cur);
+//     }else if(cur + a[i + 1] === scaleSub) {
+//       res.push(cur);
+//       res.push(a[i + 1]);
+//     }else if(cur - a[i + 1] === scaleSub) {
+//       res.push(cur);
+//       res.push(a[i + 1]);
+//     }
+//   });
+  
+  return res.length ? res.sort((a,b) => a - b).join(',') : "not possible";
+}
+
+ScaleBalancing(["[3, 4]", "[1, 2, 7, 7]"]);
+ScaleBalancing(["[13, 4]", "[1, 2, 3, 6, 14]"]);
+// 9 => if any of the 2 weights sum is 9
+ScaleBalancing(["[5, 9]", "[1, 2, 6, 7]"]);
+// 4 if any of the subtration of 2 weigths is 4
+
+// Model
+// 더 정확함
+
+function ScaleBalancing(strArr) {
+	//convert the array to something more workable
+	let newArr = strArr.map(val => {
+		return val.replace(/[\[\]]/g, "").split(',').map(val2 => {
+			return parseInt(val2, 10);
+		}).sort((a, b) => {
+			return a - b;
+		});
+	});
+	
+	let diff = newArr[0][1] - newArr[0][0];
+	let weights = newArr[1];
+
+	//do the single-weight solution test
+	if (weights.includes(diff)) {
+		return diff.toString();
+	}
+    //do the two-weights, one-side test
+	let weight1 = weights.find((val, ind) => {
+		let newWeights = weights.slice(0);
+		newWeights.splice(ind, 1);
+		return newWeights.includes (diff - val)
+	});
+	if (weight1) {
+		return `${weight1},${diff - weight1}`
+	}
+    //do the twp-weights, different sides, test
+	weight1 = weights.find(val => {
+		return weights.includes(diff + val);
+	});
+	if (weight1) {
+		return `${weight1},${diff + weight1}`
+	}
+    //if nothing is returned yet . . .
+	return `not possible`;
+
+}
