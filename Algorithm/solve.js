@@ -2000,3 +2000,134 @@ function ScaleBalancing(strArr) {
 	return `not possible`;
 
 }
+
+/*
+Return the given string as alphabetic order
+*/
+
+// My 
+// I thought I had to use charCodeAt 
+// But actually sort does it automatically 
+
+function AlphabetSoup(str) { 
+  
+  // use ascii code 
+  str = str.toLowerCase();
+
+  return str.split('').sort((a, b) => a.charCodeAt() - b.charCodeAt()).join('');
+}
+
+// Model
+
+function AlphabetSoup(str) { 
+
+  let letters = str.split('');
+  return letters.sort().join('');
+       
+}
+
+/*
+TimeConvert function
+You convert hours and mins 
+when given only mins
+*/
+
+// My
+// So dirty
+function TimeConvert(num) { 
+
+  let hr = 0;
+  let min = 0;
+
+
+  if(num >= 60) {
+     while(num >= 60) {
+       num -= 60
+       hr++; 
+     }
+     min += num;
+  }else {
+    min += num;
+  }
+  return `${hr}:${min}`; 
+}
+
+TimeConvert(126) // 2:6
+
+// Model 
+// clean and simple
+
+function TimeConvert(num) { 
+  var hours = Math.floor(num/60);
+  var minutes = num % 60;
+  var str = hours + ":" + minutes;
+  return str;
+  
+         
+}
+
+/*
+numbers stored in strArr which will be a 2D matrix that contains only the integers 1, 0, or 2.
+ Then from the position in the matrix where a 1 is, return the number of spaces either left, 
+ right, down, or up you must move to reach an enemy which is represented by a 2. 
+ You are able to wrap around one side of the matrix to the other as well. 
+ For example: if strArr is ["0000", "1000", "0002", "0002"] then this looks like the following:
+
+0 0 0 0
+1 0 0 0
+0 0 0 2
+0 0 0 2
+
+For this input your program should return 2 because the closest enemy (2) is 2 spaces away from 
+the 1 by moving left to wrap to the other side and then moving down once. 
+The array will contain any number of 0's and 2's, but only a single 1. 
+It may not contain any 2's at all as well, where in that case your program should return a 0.
+*/
+
+// My
+
+function ClosestEnemyII(strArr) { 
+
+  // 1 과 2 를 동시에 찾는다
+  // 그들의 String index와 arr index를 저장한다
+
+  let xyIndex1 = [];
+  let resultArr =[];
+
+
+  for(let i = 0; i < strArr.length; i++) {
+    let result = 0;
+    var xyIndex2 = [];
+    if(strArr[i].includes('1')) {
+      xyIndex1.push(strArr[i].indexOf('1'), i);
+    }
+    if(strArr[i].includes('2')) {
+      xyIndex2.push(strArr[i].indexOf('2'), i);
+    }
+    
+    let xDiff = Math.abs(xyIndex1[0] - xyIndex2[0]);
+    let yDiff = Math.abs(xyIndex1[1] - xyIndex2[1]);
+    
+    if(xyIndex1.length && xyIndex2.length) {
+      // x difference
+      if(xDiff === strArr.length - 1) {
+        result += 1;
+      }else if(xDiff > strArr.length / 2) {
+        result += strArr.length - xDiff;
+      }else {
+        result += xDiff;
+      }
+      // y difference
+      if(yDiff === strArr.length - 1) {
+        result += 1;
+      }else if(yDiff > strArr.length / 2) {
+        result += strArr.length - yDiff;
+      }else {
+        result += yDiff;
+      }
+      resultArr.push(result);
+    }
+  }
+  if(!resultArr.length) return 0;
+  return Math.min(...resultArr);
+}
