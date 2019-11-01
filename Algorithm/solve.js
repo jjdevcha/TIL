@@ -2131,3 +2131,40 @@ function ClosestEnemyII(strArr) {
   if(!resultArr.length) return 0;
   return Math.min(...resultArr);
 }
+
+// Model
+
+function ClosestEnemyII(strArr) {
+	//step one - return 0 if there is no 2 in the array
+	let twosies = strArr.filter(val => {
+		return val.includes("2");
+	});
+	if (!twosies.length) {
+		return 0;
+	}
+	//step two - get the coordinates of the 1 (targetX, targetY)
+	targetY = strArr.findIndex(val => {
+		return val.includes('1');
+	});
+	targetX = strArr[targetY].search(/1/);
+	//step three find the smallest path to a 2
+	let res = strArr.length * strArr[0].length;
+
+	for (let x = 0, len = strArr[0].length; x < len; x++) {
+		for (let y = 0, height = strArr.length; y < height; y++) {
+			if (strArr[y][x] === '2') {
+				xShift = distance(targetX, x, len);
+				yShift = distance(targetY, y, height);
+				res = Math.min(res, xShift + yShift);
+			}
+		}
+	}
+	return res;
+
+}
+
+
+function distance(index1, index2, len) {
+	return Math.min(Math.abs(index2 - index1), len - Math.abs(index2 - index1));
+}
+   
