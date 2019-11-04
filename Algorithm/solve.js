@@ -2236,4 +2236,100 @@ function VowelSquare(strArr) {
   }
 }
  
-   
+
+/*
+Coderbytes 
+Correct path
+*/
+
+// My 
+// Can't figure it out 
+// Try it the other time
+
+function CorrectPath(str) { 
+  //  r, l, u, d, ?. 
+  const dir = {
+    d: -1,
+    u: 1,
+    r: 1,
+    l: -1
+  };
+  let dirKeys = Object.keys(dir);
+  let strArr = str.split('');
+  let questCount = 0;
+  let verCount = 0;
+  let horCount = 0;
+  let convertQues = [];
+  
+ 
+  strArr.forEach(el => {
+    if(el === "?") {
+      questCount++;
+    }else if(el === "d" || el === "u"){
+      verCount += dir[el];
+    }else {
+      horCount+= dir[el];
+    }
+  });
+  
+  // return strArr;
+  console.log(questCount);
+  console.log(verCount); 
+  console.log(horCount);
+
+  if(verCount != -4) {
+    let diff = -4 - verCount;
+    if(diff / questCount === -1) {
+      for(let i = 0; i < questCount; i++) {
+        convertQues.push('d');
+      }
+    }else if(diff / questCount === 1) {
+      for(let i = 0; i < questCount; i++) {
+        convertQues.push('u');
+      }
+    }
+  }
+
+  console.log(convertQues);
+}
+
+CorrectPath("???rrurdr?"); // dddrrurdrd
+
+/*
+Codewars
+Vasya - Clerk
+*/
+
+// My
+// 역시나 1개의 유닛 테스트가 통과하지를 않는다. 
+
+function tickets(peopleInLine){
+
+
+  let vasMoney = [0];
+  let peopleAllow = 0;
+
+  for (let i = 0; i < peopleInLine.length; i++) {
+    if(peopleInLine[i] === 25) {
+      vasMoney.push(25);
+      peopleAllow++;
+    }else {
+      if(vasMoney.includes(peopleInLine[i]-25)) {
+        vasMoney.push(peopleInLine[i]);
+        let changeInd = vasMoney.indexOf(peopleInLine[i]-25);
+        vasMoney.splice(changeInd, 1);
+        peopleAllow++;
+      }else if(vasMoney.reduce((a,b) => a + b) === peopleInLine[i] - 25) {
+        peopleAllow++;
+        vasMoney.splice(1);
+        vasMoney.push(peopleInLine[i]);
+      }
+    }
+  }
+
+  return peopleAllow === peopleInLine.length ? "YES" : "NO";
+}
+
+tickets([25, 25, 50, 50])//"YES";
+tickets([25, 100])//  "NO";
+tickets([25,50,25,100,25,50,25,100,25,50,25,100,25,25,25,100]);
