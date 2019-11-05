@@ -2333,3 +2333,52 @@ function tickets(peopleInLine){
 tickets([25, 25, 50, 50])//"YES";
 tickets([25, 100])//  "NO";
 tickets([25,50,25,100,25,50,25,100,25,50,25,100,25,25,25,100]);
+
+/*
+codewars
+Kata
+square every digit
+*/
+
+// My 
+
+function squareDigits(num){
+  
+  return parseInt(String(num).split('').map(n => 
+            Math.pow(parseInt(n), 2)).reduce((a , b) => 
+                `${a}${b}`)); 
+}
+
+/*
+codewars
+Kata
+find Shortest word length
+*/
+
+//My 
+
+function findShort(s){
+
+  return s.split(' ').sort((a, b) => a.length - b.length)[0].length;
+}
+
+findShort("bitcoin take over the world maybe who knows perhaps");
+
+/*
+Codewars
+Kata
+Sum of 3 or 5 mutiples below the number
+*/
+
+function solution(number){
+  let res = [];
+
+  for (let i = 3; i < number; i++) {
+      if((i % 3 === 0 || i % 5 === 0) && !res.includes(i))  {
+          res.push(i);
+      }
+  }
+  return res.length ? res.reduce((a, b) => a + b) : 0;
+}
+
+solution(10); // 3 + 5 + 6 + 9 = 23
