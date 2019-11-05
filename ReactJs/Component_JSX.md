@@ -10,9 +10,9 @@ Looks like HTML but it's not. JSX is just syntactic sugar for JavaScript, allowi
 
 ### Creating components
 
-* 1 Functional components
+* 1 Functional components(also referred to as "presentational", "dumb" or "stateless" components)<br>
 `const cmp = () => { return <div>some JSX</div>`
-* 2 class-based components
+* 2 class-based components(also referred to as "containers", "smart" or "stateful" components)<br>
 `class Cmp extends Component { render () { return <div>some JSX</div> } }`
 
 
