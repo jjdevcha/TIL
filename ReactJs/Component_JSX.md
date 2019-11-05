@@ -1,8 +1,21 @@
 
 ## Component
-A function that returns HTML 
-#### How does it look?
+A function that returns **JSX**
+
+### What is JSX?
+Looks like HTML but it's not. JSX is just syntactic sugar for JavaScript, allowing you to write HTMLish code instead of nested React.createElement(...) calls.
+
+#### How does a component look?
 `<function name />`
+
+### Creating components
+
+* 1 Functional components
+`const cmp = () => { return <div>some JSX</div>`
+* 2 class-based components
+`class Cmp extends Component { render () { return <div>some JSX</div> } }`
+
+
 #### To make a component
 1. You have to make a js file
 2. `import React from 'react';`
