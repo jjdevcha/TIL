@@ -35,6 +35,7 @@ variety of languages and technologies.
 - [CopyingObject](javascript/copyingObject.md)
 - [Destructuring](javascript/destructuring.md)
 - [Generator, Iterator](javascript/generator_iterator.md)
+- [Set](javascript/Set.md)
 
 ### ReactJs
 
