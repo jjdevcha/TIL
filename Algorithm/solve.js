@@ -2382,3 +2382,83 @@ function solution(number){
 }
 
 solution(10); // 3 + 5 + 6 + 9 = 23
+
+/*
+Codewars
+Kata
+Format a string of names like 'Bart, Lisa & Maggie'.
+*/
+
+// My 
+
+function list(names){
+  if (!names.length) {
+    return '';
+  } else if (names.length === 1) {
+    return names[0].name;
+  } else {
+    let str = names.map(cur => cur.name).join(', ');
+    let commaInd = str.lastIndexOf(',');
+    let strArr = str.split('')
+    strArr.splice(commaInd, 1 , ' &');
+    return strArr.join(''); 
+  }
+}
+
+// Model
+
+function list(names){
+  return names.reduce(function(prev, current, index, array){
+    if (index === 0){
+      return current.name;
+    }
+    else if (index === array.length - 1){
+      return prev + ' & ' + current.name;
+    } 
+    else {
+      return prev + ', ' + current.name;
+    }
+  }, '');
+ }
+
+ // Model 2
+
+ function list(names) {
+  var xs = names.map(p => p.name)
+  var x = xs.pop()
+  return xs.length ? xs.join(", ") + " & " + x : x || ""
+}
+
+/*
+Codewars
+Kata
+Two to one
+반복되는 문자는 하나만 출력 
+*/
+
+// My
+
+function longest(s1, s2) {
+  // add s1, s2
+  // sort in order
+  // deal with repetition
+
+  let res = [];
+
+  (s1 + s2).split('').sort()
+  .forEach(cur => {
+    if(!res.includes(cur)) res.push(cur);
+  });
+
+  return res.join('');
+}
+
+// Model
+
+const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('')
+
+// Model 2
+
+function longest(s1, s2) {
+  return Array.from(new Set(s1 + s2)).sort().join('');
+}
