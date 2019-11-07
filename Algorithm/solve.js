@@ -2462,3 +2462,65 @@ const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('')
 function longest(s1, s2) {
   return Array.from(new Set(s1 + s2)).sort().join('');
 }
+
+/*
+Kata 
+Simple pig latin
+*/
+
+// My 
+
+function pigIt(str){
+
+  return str.split(' ')
+  .map(cur => {
+    if((/\w+/g).test(cur)) {
+     return cur.substring(1) + cur.substring(0, 1) + 'ay'
+     } else {return cur}
+    })
+  .join(' ')
+}
+
+// Model
+// I don't understand \$1
+
+function pigIt(str){
+  return str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+}
+
+/*
+Kata
+facebook emotion
+*/
+
+// My
+
+function likes(names) {
+  let res = '';
+  if (!names.length) res += 'no one likes this'
+  else if (names.length === 1) res += names[0] + ' likes this'
+  else if (names.length === 2) res += `${names[0]} and ${names[1]} like this`
+  else if (names.length === 3) res += `${names[0]}, ${names[1]} and ${names[2]} like this`
+  else res += `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
+
+  return res;
+}
+
+// Model
+// 마지막 return 에서 names.length 할 수 있는 이유는 
+// shift 가 mutable 이기 때문에!!!!! 
+
+function likes (names) {
+  var templates = [
+    'no one likes this',
+    '{name} likes this',
+    '{name} and {name} like this',
+    '{name}, {name} and {name} like this',
+    '{name}, {name} and {n} others like this'
+  ];
+  var idx = Math.min(names.length, 4);
+  
+  return templates[idx].replace(/{name}|{n}/g, function (val) {
+    return val === '{name}' ? names.shift() : names.length;
+  });
+}
