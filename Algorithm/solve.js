@@ -2524,3 +2524,75 @@ function likes (names) {
     return val === '{name}' ? names.shift() : names.length;
   });
 }
+
+/*
+Kata
+Narcissistic number
+*/
+
+// My
+
+function narcissistic(value) {
+  
+  return value === String(value).split('')
+  .map((n, i, a) => Math.pow(Number(n), a.length))
+  .reduce((a, b) => a + b) 
+  ? true : false
+}
+
+/*
+Kata
+Direction reduction
+*/
+
+// My
+function dirReduc(arr){
+
+  function check(a) {
+    for (let i = 0; i < a.length; i++) {
+      if((a[i] === 'NORTH' && a[i + 1] === 'SOUTH') || (a[i] === 'SOUTH' && a[i + 1] === 'NORTH')
+      || (a[i] === 'EAST' && a[i + 1] === 'WEST') || (a[i] === 'WEST' && a[i + 1] === 'EAST')) {
+        a.splice(i, 2);
+        return true
+      }  
+    }
+    return false;
+  } 
+   
+  if(check(arr)) return dirReduc(arr)
+  else return arr;
+}
+
+dirReduc(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"])//, [])
+
+//dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"])//, ["WEST"])
+//dirReduc(["NORTH", "WEST", "SOUTH", "EAST"])//, ["NORTH", "WEST", "SOUTH", "EAST"])
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if((arr[i] === 'NORTH' && arr[i + 1] === 'SOUTH') || (arr[i] === 'SOUTH' && arr[i + 1] === 'NORTH')
+//     || (arr[i] === 'EAST' && arr[i + 1] === 'WEST') || (arr[i] === 'WEST' && arr[i + 1] === 'EAST')) {
+//       arr.splice(i, 2);
+//     }  
+//   }
+
+// Model
+
+function dirReduc(plan) {
+  var opposite = {
+    'NORTH': 'SOUTH', 'EAST': 'WEST', 'SOUTH': 'NORTH', 'WEST': 'EAST'};
+  return plan.reduce(function(dirs, dir){
+      if (dirs[dirs.length - 1] === opposite[dir])
+        dirs.pop();
+      else
+        dirs.push(dir);
+      return dirs;
+    }, []);
+}
+
+// Model
+
+function dirReduc(arr) {
+  var str = arr.join(''), pattern = /NORTHSOUTH|EASTWEST|SOUTHNORTH|WESTEAST/;
+  while (pattern.test(str)) str = str.replace(pattern,'');
+  return str.match(/(NORTH|SOUTH|EAST|WEST)/g)||[];
+}
