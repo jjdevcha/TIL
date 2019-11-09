@@ -2596,3 +2596,21 @@ function dirReduc(arr) {
   while (pattern.test(str)) str = str.replace(pattern,'');
   return str.match(/(NORTH|SOUTH|EAST|WEST)/g)||[];
 }
+
+/*
+Kata
+Who's next?
+*/
+
+// My
+// it takes so much time when r is too big
+function whoIsNext(names, r){
+  let res = '';
+  for(let i = 0; i <= r; i++) {
+    if(i === r - 1) {
+      return names[0];
+    }
+    names.push(names[0], names[0]);
+    names.shift();
+  }
+}
