@@ -2669,3 +2669,59 @@ function primeFactors(n){
 
 // 18 => (2)(3**2);
 // 100 => 2**2 5**2
+
+/*
+Kata
+A friend of mine takes a sequence of numbers from 1 to n (where n > 0).
+Within that sequence, he chooses two numbers, a and b.
+He says that the product of a and b should be equal to the sum of all numbers in the sequence, excluding a and b.
+Given a number n, could you tell me the numbers he excluded from the sequence?
+*/
+
+// My
+// Time out
+// O(n**2)
+
+function removeNb (n) {
+
+  for (let i = 1; i <= n; i++) {
+      for (let j = 2; j <= n; j++) {
+          if (i * j === n / 2 * (1 + n) - (i + j)) {
+              return [[i, j],[j, i]];
+          }
+      }
+  }
+  return [];
+}
+
+// 26 => 1 + 27 / 13 
+
+// My 2
+// failed in some cases if the result is more than 2 array
+function removeNb (n) {
+  let a, b = 1;
+  
+  for (b = 1; b <= n; b++) {
+    a = ((1 + n) * (n / 2) - b) / (b + 1);
+    if(a % 1 === 0 && a <= n) return [[a, b],[b, a]];
+  }
+  return []
+}
+
+//const sum = (1 + n) * (n / 2) - (a + b);
+// a * b = (1 + n) * (n / 2) - a - b
+// b(a + 1) = (1 + n) * (n / 2) - a
+// b = ((1 + n) * (n / 2) - a)) / a + 1
+
+// My 3
+
+function removeNb (n) {
+  let a, b = 1;
+  let res = [];
+
+  for (b = n; b >= 1; b--) {
+      a = ((1 + n) * (n / 2) - b) / (b + 1);
+      if(a % 1 === 0 && a <= n) res.push([a, b]);
+  }
+  return res;
+}
