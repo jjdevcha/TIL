@@ -2614,3 +2614,58 @@ function whoIsNext(names, r){
     names.shift();
   }
 }
+
+/*
+Kata
+Prime factor
+*/
+
+function primeFactors(n){
+
+  function checkPrime(num) {
+    if (num === 2) return true;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false
+    }
+    return true;
+  }
+
+  let twoPow = 0;
+  let threePow = 0;
+  let fivePow = 0;
+  let sevenPow = 0;
+  let elevenPow = 0;
+  
+  if(checkPrime(n)) return `(${n})`;
+
+  while(n % 2 === 0 || n % 3 === 0 
+        || n % 5 === 0 || n % 7 === 0 || n % 11 === 0) {
+
+   if (n % 2 === 0) {
+     n = n / 2;
+     twoPow++;
+   } 
+
+   if (n % 3 === 0) {
+     n = n / 3;
+     threePow++;
+   }
+
+   if (n % 5 === 0) {
+     n = n / 5;
+     fivePow++;
+   }
+
+   if (n % 7 === 0) {
+     n = n / 7;
+     sevenPow++;
+   }
+
+   if (n % 11 === 0) {
+     n = n / 11;
+   } 
+  } 
+}
+
+// 18 => (2)(3**2);
+// 100 => 2**2 5**2
