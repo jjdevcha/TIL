@@ -2725,3 +2725,34 @@ function removeNb (n) {
   }
   return res;
 }
+
+/*
+Kata
+Scramblies
+Complete the function scramble(str1, str2) that returns true 
+if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
+*/
+
+// My => somehow not passing the attempt
+function scramble(str1, str2) {
+
+  return str2.split('').every(el => str1.split('').includes(el)) 
+          ? true : false;
+}
+
+// My 2nd 
+// make str1 and str2 to Array
+// check if str1 array includes str2 element
+// if not splice it
+// if str1 === str2 // true
+
+function scramble(str1, str2) {
+  let occur = str1.split('').reduce((obj, cur) => {
+      obj[cur] ? obj[cur]++ : obj[cur] = 1;
+      return obj;
+  }, {});
+
+  return str2.split('').every(el => --occur[el] >= 0);
+}
+
+
