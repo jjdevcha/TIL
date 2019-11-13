@@ -2755,4 +2755,60 @@ function scramble(str1, str2) {
   return str2.split('').every(el => --occur[el] >= 0);
 }
 
+/**
+ * Sudoku is a game played on a 9x9 grid. The goal of the game is to fill all cells of the grid 
+ * with digits from 1 to 9, so that each column, each row, and each of the nine 3x3 sub-grids 
+ * (also known as blocks) contain all of the digits from 1 to 9.
+ */
+
+ // My 
+ function validSolution(board){
+  // The goal of the game is to fill all cells of the grid with digits from 1 to 9, 
+  // so that each column, each row, and each of the nine 3x3 sub-grids 
+  // (also known as blocks) contain all of the digits from 1 to 9.
+ 
+     function rowCheck() {
+         return board.every(row => row.sort().join('-') === '1-2-3-4-5-6-7-8-9');
+     }
+ 
+     function colCheck() {
+ 
+         for(let col = 0; col < board.length; col++) {
+ 
+             let colArr = [];
+ 
+             for(let row = 0; row < board.length; row++) {
+                 colArr.push(board[row][col]);
+             }
+             if(colArr.sort().join('-') !== '1-2-3-4-5-6-7-8-9') return false;
+         }
+         
+         return true;
+     }
+ 
+     function gridCheck() {
+         for(let row = 0; row < 3; row++) {
+             for(let col = 0; col < 3; col++) {
+                 if(getGrid(row, col, board).sort().join('-') !== '1-2-3-4-5-6-7-8-9') {
+                     return false
+                 }
+             }
+         }
+         return true;
+     }
+ 
+     function getGrid(row, col, board) {
+         let gridArr = [];
+         for(let r = 3*row; r < 3*(row + 1); r++) {
+             gridArr = gridArr.concat(board[r].slice(3*col, 3*(col+1)));
+         }
+         return gridArr;
+     }
+ 
+     return gridCheck() && colCheck() && rowCheck();
+ }
+
+ // Model
+
+ 
 
