@@ -2810,5 +2810,38 @@ function scramble(str1, str2) {
 
  // Model
 
- 
+ /**
+  * Kata
+  * String incrementer
+  */
+
+  // My 
+  function incrementString (string) {
+    // number을 따로 빼자
+    
+    let str = string.split('').filter(el => !Number.isInteger(parseInt(el, 10))).join('');
+    let numStr = string.split('').filter(el => Number.isInteger(parseInt(el, 10)));
+    let newNum = Number(numStr.filter(el => el != '0').join('')) + 1;
+  
+    if(numStr.length) {
+       return `${str}${numStr.length > String(newNum).length ? '0'.repeat(numStr.length - String(newNum).length): ""}${newNum}`;
+    } else {
+      return `${str}1`
+    }
+  }
+  
+  //incrementString("foobar000")//, "foobar001");
+  //incrementString("foo")//, "foo1");
+  // incrementString("foobar001")//, "foobar002");
+  // incrementString("foobar99")//, "foobar100");
+  // incrementString("foobar099") //, "foobar100");
+  // incrementString("")//, "1");
+
+  // Model
+
+  function incrementString(input) {
+    return input.replace(/([0-8]?)(9*)$/, function(s, d, ns) {
+        return +d + 1 + ns.replace(/9/g, '0');
+      });
+  }
 
