@@ -2845,3 +2845,25 @@ function scramble(str1, str2) {
       });
   }
 
+  /**
+   * Kata
+   * Adding big number
+   */
+
+  // My 1st
+  // It didn't work 
+  
+  function add(a, b) {
+    let num = Number(a) + Number(b);
+    let numArr = [];
+  
+    while(num != 0) {
+      numArr.unshift(String(num % 10));
+      num = parseInt(num / 10); 
+    }
+  
+    return numArr.join('');
+  }
+
+  
+
