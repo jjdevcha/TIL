@@ -2870,20 +2870,84 @@ function scramble(str1, str2) {
     return BigInt(a) + BigInt(b) + '';
   }
 
-  // Model 
-  // 잘 이해가 안됨 
+  // Model  
 
-  function add (a, b) {
+  function add (a, b) { // 8888 + 222 =  9110
     let res = '', c = 0
-    a = a.split('')
-    b = b.split('')
-    while (a.length || b.length || c) {
-      c += ~~a.pop() + ~~b.pop()
-      res = c % 10 + res
-      c = c > 9
+    a = a.split('') // [] 
+    b = b.split('') // []
+    while (a.length || b.length || c) { 
+      c += ~~a.pop() + ~~b.pop() // c = 9
+      res = c % 10 + res // res = 9110
+      c = c > 9 // c = false => 0
     }
-    return res
+    return res 
   }
+
+  // 슬기님 풀이
+
+  function add(a, b) {
+
+    const convertToNum = (arr) => {
+      return arr.map(str => Number(str));
+    }
+  
+    const makeLengthSame = (a, b) => {
+      if (a.length === b.length) return;
+      if (a.length > b.length) {
+        while (a.length !== b.length) {
+          b.unshift(0);
+        }
+      } else if (a.length < b.length) {
+        while (a.length !== b.length) {
+          a.unshift(0);
+        }
+      }
+    }
+  
+    const addArrays = (a, b) => {
+      makeLengthSame(a, b);
+      let result = [];
+      for (let i = 0; i < a.length; i++) {
+        result[i] = a[i] + b[i];
+      }
+  
+      return result;
+    }
+  
+    const passOverTen = {
+      needSpace : false,
+      arr: [],
+      mappedArr : function () { 
+        this.arr.map((item, idx, arr) => {
+          if (item >= 10) {
+            arr[idx] = item % 10;
+            if (!(arr[idx + 1] === undefined)) {
+              arr[idx + 1] = arr[idx + 1] + 1;
+            } else {
+              console.log('hello');
+              this.needSpace = true;
+            }
+          }
+          return item;
+        });
+      }
+    }
+  
+    const arrA = convertToNum(a.split(''));
+    const arrB = convertToNum(b.split(''));
+    const addedArray = addArrays(arrA, arrB);
+  
+    passOverTen.arr = addedArray.reverse();
+    passOverTen.mappedArr();
+  
+    if (passOverTen.needSpace) {
+      passOverTen.arr.push(1);
+    }
+  
+    return passOverTen.arr.reverse().join('');
+  }
+  
   
 
   /**
@@ -2924,4 +2988,59 @@ function scramble(str1, str2) {
   function alphanumeric(string){
     return /^[0-9a-z]+$/i.test(string);
   }
+
+  /**
+   * Kata
+   * RGB to HEX
+   */
+
+// My 
+
+function rgb(r, g, b){
+  // 10 decimal => 16 decimal
+
+  const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+
+  function converter(n) {
+    let res = [];
+    
+    if(n < 0) n = 0;
+    if(n > 255) n = 255;
+    if(n < 16) {
+      return '0' + hex[n];
+    } else {
+      res.unshift(n % 16);
+      n = Math.floor(n / 16);
+      if (n > 15) {
+        converter(n);
+      }else {
+        res.unshift(n);
+      }
+    }
+
+    return `${hex[res[0]]}${hex[res[1]]}`;
+  }
+
+  return converter(r) + converter(g) + converter(b); 
+}
+
+rgb(255, 255, 255) // returns FFFFFF
+rgb(255, 255, 300) // returns FFFFFF
+rgb(0,0,0) // returns 000000
+rgb(148, 0, 211) // returns 9400D3
+
+
+// Model
+// toString(base) 원하는 진법으로 바꿀 수 있음 
+// negative index 는 뒤에서 부터 -1, -2
+
+function rgb(r, g, b){
+  return toHex(r)+toHex(g)+toHex(b);
+}
+
+function toHex(d) {
+    if(d < 0 ) {return "00";}
+    if(d > 255 ) {return "FF";}
+    return  ("0"+(Number(d).toString(16))).slice(-2).toUpperCase()
+}
 
