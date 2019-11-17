@@ -2865,5 +2865,63 @@ function scramble(str1, str2) {
     return numArr.join('');
   }
 
+  // My 2nd 
+  function add(a, b) {
+    return BigInt(a) + BigInt(b) + '';
+  }
+
+  // Model 
+  // 잘 이해가 안됨 
+
+  function add (a, b) {
+    let res = '', c = 0
+    a = a.split('')
+    b = b.split('')
+    while (a.length || b.length || c) {
+      c += ~~a.pop() + ~~b.pop()
+      res = c % 10 + res
+      c = c > 9
+    }
+    return res
+  }
   
+
+  /**
+   * Kata
+   * The string has the following conditions to be alphanumeric
+   * At least one character ("" is not valid)
+   * Allowed characters are uppercase / lowercase latin letters and digits from 0 to 9
+   * No whitespaces / underscore
+   */
+
+   // My 1st
+  // Didn't work
+   function alphanumeric(string){
+
+    let strArr = string.split('');
+  
+    for (let i = 0; i < strArr.length; i++) {
+      
+      if(/\w/g.test(strArr[i]) === false) return false;
+    }
+  
+    return true;
+  }
+
+  // My 2nd
+  // Underscore is not involed in \W 
+
+  function alphanumeric(string){
+
+    if(/[\W_]/g.test(string) || string === "") return false;
+  
+    return true;
+  }
+
+  // Model
+  // 근데 A-Z 이게 없는데 어떻게 대문자가 검사가 되지? 
+
+  function alphanumeric(string){
+    return /^[0-9a-z]+$/i.test(string);
+  }
 
