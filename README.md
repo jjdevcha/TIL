@@ -42,6 +42,7 @@ variety of languages and technologies.
 - [Component, Jsx](ReactJs/Component_JSX.md)
 - [Class, State](ReactJs/classComponet_state.md)
 - [Method reference](ReactJs/MethodReference.md)
+- [Types of Component](ReactJs/TypesOfComponent.md)
 
 ### Algorithm
 3 Algorithm problems that I've solved everyday
