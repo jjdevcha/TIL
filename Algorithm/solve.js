@@ -3044,3 +3044,34 @@ function toHex(d) {
     return  ("0"+(Number(d).toString(16))).slice(-2).toUpperCase()
 }
 
+/**
+ * Kata
+ * Where my anagrams at?
+ */
+
+ // My
+
+ function anagrams(word, words) {
+
+  // filter words array
+  // split, sort and compare with word 
+
+  return words.filter(cur => cur.split('').sort().join('') === word.split('').sort().join(''));
+}
+
+anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']) // ['aabb', 'bbaa']
+
+anagrams('laser', ['lazing', 'lazy',  'lacer']) // []
+
+// Model
+
+String.prototype.sort = function() {
+  return this.split("").sort().join("");
+};
+
+function anagrams(word, words) {
+  return words.filter(function(x) {
+      return x.sort() === word.sort();
+  });
+}
+
