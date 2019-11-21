@@ -3075,3 +3075,20 @@ function anagrams(word, words) {
   });
 }
 
+/*
+Kata
+Perfect Power
+*/
+
+// Model
+
+var isPP = function(n){
+  for (let m = 2; m * m <= n; m++) {
+    for (let k = 2; m**k <= n; k++) {
+      if(m**k === n) return [m, k];
+    }
+  }
+  return null;
+}
+
+
