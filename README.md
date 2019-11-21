@@ -43,6 +43,7 @@ variety of languages and technologies.
 - [Class, State](ReactJs/classComponet_state.md)
 - [Method reference](ReactJs/MethodReference.md)
 - [Types of Component](ReactJs/TypesOfComponent.md)
+- [React condition](ReactJs/condition.md)
 
 ### Algorithm
 3 Algorithm problems that I've solved everyday
