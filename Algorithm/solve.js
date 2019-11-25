@@ -3091,4 +3091,35 @@ var isPP = function(n){
   return null;
 }
 
+/**
+ * Kata
+ * Sum of pairs
+ */
+
+ // My 
+ // stack over flow when it's a long list
+
+ var sum_pairs=function(ints, s){
+  for (let i = 0; i < ints.length - 1; i++) {
+    for (let j = 1; j < ints.length; j++) {
+      if(s - ints[i] - ints[j] === 0) {
+        return [ints[i], ints[j]];
+      }
+    }
+  }
+  return undefined;
+}
+
+// Model
+
+var sum_pairs=function(ints, s){
+  let obj = {};
+  for (let i = 0; i < ints.length; i++) {
+    if(obj[s - ints[i]]) return [s - ints[i], ints[i]]
+    obj[ints[i]] = true;
+  }
+}
+
+sum_pairs([4, 3, 2, 3, 4], 6) //[4, 2]
+
 
