@@ -3122,4 +3122,95 @@ var sum_pairs=function(ints, s){
 
 sum_pairs([4, 3, 2, 3, 4], 6) //[4, 2]
 
+/*
+Kata
+parseInt() reloaded
+*/
+
+// My 
+function parseInt(string) {
+  let total = 0;
+
+  let strArr = string.split(/[ -]/).filter(cur => cur != 'and');
+
+  let millionCell = [];
+  let thousandCell = [];
+  let hundredCell = [];
+  let tenCell = [];
+
+  const num = {
+    zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6,
+    seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, thirteen: 13, 
+    fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18,
+    nineteen: 19, twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60,
+    seventy: 70, eighty: 80, ninety: 90
+  }
+  
+  // Putting number in cells
+  let millionInd = strArr.indexOf('million');
+  if(millionInd !== -1) {millionCell = strArr.splice(0, millionInd + 1)};
+
+  let thousandInd = strArr.indexOf('thousand');
+  if(thousandInd !== -1) {
+    thousandCell = strArr.slice(millionInd + 1, thousandInd + 1);
+    strArr.splice(0, thousandInd + 1);
+  }
+
+  let hundredInd = strArr.indexOf('hundred');
+  if(hundredInd !== -1) hundredCell = strArr.splice(0, hundredInd + 1);
+
+  tenCell = strArr.slice(0);
+
+  // Converting cells into number
+  if(millionCell.length) {
+    total += 1000000;
+  }
+  if(thousandCell.length) {
+    let thousandTotal = 0;
+    if(thousandCell.includes('hundred')) {
+      const hunInThou = thousandCell.indexOf('hundred');
+      thousandTotal += num[thousandCell[hunInThou - 1]] * 100;
+      thousandCell.splice(0, hunInThou + 1);
+    }
+    for (let i = 0; i < thousandCell.length - 1; i++) {
+      thousandTotal += num[thousandCell[i]];
+    }
+    total += thousandTotal * 1000;
+  }
+  if(hundredCell.length) {total += num[hundredCell[0]] * 100;}
+  if(tenCell.length) {
+    tenCell.forEach(cur => {
+    if(num[cur]) total += num[cur]
+    })
+   };
+
+  return total;
+}
+
+parseInt("seven hundred eighty-three thousand nine hundred and nineteen"); // 783919
+// ["seven", "hundred", "eighty-three", "thousand", "nine", "hundred", "and", "nineteen"]
+// 933981
+
+parseInt("nine hundred thirty-three thousand nine hundred eighty one");
+
+//158273
+parseInt("one hundred fifty-eight thousand two hundred seventy-three")
+
+parseInt('two hundred and forty-six')
+
+// Model
+var words = {
+  "zero":0, "one":1, "two":2, "three":3, "four":4, "five":5, "six":6, "seven":7, "eight":8, "nine":9, 
+  "ten":10, "eleven":11, "twelve":12, "thirteen":13, "fourteen":14, "fifteen":15, "sixteen":16, 
+  "seventeen":17, "eighteen":18, "nineteen":19, "twenty":20, "thirty":30, "forty":40, "fifty":50, 
+  "sixty":60, "seventy":70, "eighty":80, "ninety":90
+};
+var mult = { "hundred":100, "thousand":1000, "million": 1000000 };
+function parseInt(str) {
+  return str.split(/ |-/).reduce(function(value, word) {
+    if (words[word]) value += words[word];
+    if (mult[word]) value += mult[word] * (value % mult[word]) - (value % mult[word]);
+    return value;
+  },0);
+}
 
