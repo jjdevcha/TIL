@@ -3214,3 +3214,21 @@ function parseInt(str) {
   },0);
 }
 
+/*
+Kata
+Regex Password Validation
+*/
+
+// My 1st
+// It also counts whitespaces
+
+function validate(password) {
+  return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/g.test(password);
+}
+
+// My 2nd
+
+function validate(password) {
+  return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{6,}$/g.test(password);
+}
+
