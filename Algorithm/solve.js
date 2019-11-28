@@ -3232,3 +3232,57 @@ function validate(password) {
   return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9]{6,}$/g.test(password);
 }
 
+/**
+ * Kata
+ * Sum Strings as Numbers
+ * 저번에 슬기님이랑 페어프밍 한거랑 비슷함 
+ * 슬기님 알고리즘 기억해서 함
+ * 근데 내껀 너무 지저분
+ */
+
+ // My 
+ function sumStrings(a,b) { 
+  let resultArr = [];
+  let arrA = a.split('').reverse().map(cur => Number(cur));
+  let arrB = b.split('').reverse().map(cur => Number(cur));
+  const lengthDiff = arrA.length - arrB.length;
+
+  // Match the length
+  if (lengthDiff > 0) {
+    for(let i = 0; i < lengthDiff; i++) {
+       arrB.push(0);
+    }
+  } else if (lengthDiff < 0) {
+    for(let i = 0; i < Math.abs(lengthDiff); i++) {
+       arrA.push(0);
+    }
+  }
+  // Sum the arrays
+  for(let i = 0; i < arrA.length; i++) {
+    resultArr.push(arrA[i] + arrB[i]);
+  }
+  // Deal with 10 
+  for(let i = 0; i < resultArr.length; i++) {
+    if(resultArr[i] >= 10 && i < resultArr.length - 1) {
+      resultArr[i] -= 10;
+      resultArr[i + 1]++;
+    } else if(resultArr >= 10 && i === resultArr.length - 1) {
+      resultArr[i] -= 10;
+      resultArr.push(1);
+    }
+  }
+
+  function deleteZero(arr) {
+    const firstNum = arr.findIndex(cur => cur != 0);
+    return arr.splice(firstNum);
+  }
+
+  return deleteZero(resultArr.reverse()).join('');
+
+}
+
+//sumStrings('712569312664357328695151392', '8100824045303269669937')
+
+// 9999, 1100 => 11099
+// 9999, 110 => 
+
