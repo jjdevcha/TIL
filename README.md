@@ -44,6 +44,7 @@ variety of languages and technologies.
 - [Method reference](ReactJs/MethodReference.md)
 - [Types of Component](ReactJs/TypesOfComponent.md)
 - [React condition](ReactJs/condition.md)
+- [Higher Order Component](ReactJs/HOC.md)
 
 ### Algorithm
 3 Algorithm problems that I've solved everyday
