@@ -40,7 +40,7 @@ variety of languages and technologies.
 ### ReactJs
 
 - [Component, Jsx](ReactJs/Component_JSX.md)
-- [Props, State](ReactJS/propsAndState.md)
+- [Props, State](ReactJs/propsAndState.md)
 - [Class, State](ReactJs/classComponet_state.md)
 - [Method reference](ReactJs/MethodReference.md)
 - [Types of Component](ReactJs/TypesOfComponent.md)
