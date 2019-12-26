@@ -3,7 +3,33 @@
 A function that returns **JSX**
 
 ### What is JSX?
-Looks like HTML but it's not. JSX is just syntactic sugar for JavaScript, allowing you to write HTMLish code instead of nested React.createElement(...) calls.
+Looks like HTML but it's not. JSX is just syntactic sugar for JavaScript, allowing you to write HTMLish code instead of nested React.createElement(...) calls.<br>
+
+- Using **JSX**
+```JSX
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi I'm React App</h1>
+      </div>
+    );
+  }
+}
+```
+- **JSX** restriction
+You must wrap the whole JSX in a single element. 
+
+### What if you don't use JSX?
+You can use `React.createElement(component, props, ...children)`
+```js
+class App extends Component {
+  render() {
+    return React.createElement('div', {className: 'App'}, React.createElement('h1', null, `Hi I'm React App`))
+  }
+}
+```
+Obviously so complicated. So this is why we are using JSX.
 
 #### How does a component look?
 `<function name />`
