@@ -43,6 +43,7 @@ variety of languages and technologies.
 - [Props, State](ReactJs/propsAndState.md)
 - [Class, State](ReactJs/classComponet_state.md)
 - [useState()](ReactJs/useState.md)
+- [Passing arguments](ReactJs/passingArguments.md)
 - [Method reference](ReactJs/MethodReference.md)
 - [Types of Component](ReactJs/TypesOfComponent.md)
 - [React condition](ReactJs/condition.md)
