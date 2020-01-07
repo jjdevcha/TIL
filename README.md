@@ -47,6 +47,7 @@ variety of languages and technologies.
 - [Method reference](ReactJs/MethodReference.md)
 - [Types of Component](ReactJs/TypesOfComponent.md)
 - [React condition](ReactJs/condition.md)
+- [Immutably updating state](ReactJs/ImmutablyUpdatingState.md)
 - [Higher Order Component](ReactJs/HOC.md)
 
 ### Algorithm
