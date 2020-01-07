@@ -18,6 +18,26 @@ class App extends Component {
 }
 ```
 
+## If statement
+```js
+class App extends Component {
+  render() {
+    
+    let res = null;
+    if (1 + 1 === 2) {
+      res = (<div>Correct!</div>);
+    } else {
+      res = (<div>Wrong!</div>)
+    }
+    return(
+      <div>
+        {res}
+      </div>
+    )
+  }
+}
+```
+
 ## && Operator
 Showing the result only when it's true
 ```js
