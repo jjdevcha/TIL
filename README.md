@@ -48,6 +48,7 @@ variety of languages and technologies.
 - [Types of Component](ReactJs/TypesOfComponent.md)
 - [React condition](ReactJs/condition.md)
 - [Immutably updating state](ReactJs/ImmutablyUpdatingState.md)
+- [Styling Components](ReactJs/stylingComponents.md)
 - [Higher Order Component](ReactJs/HOC.md)
 
 ### Algorithm
