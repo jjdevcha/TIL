@@ -42,15 +42,21 @@ variety of languages and technologies.
 - [Component, Jsx](ReactJs/Component_JSX.md)
 - [Props, State](ReactJs/propsAndState.md)
 - [Class, State](ReactJs/classComponet_state.md)
+- [useState()](ReactJs/useState.md)
+- [Passing arguments](ReactJs/passingArguments.md)
 - [Method reference](ReactJs/MethodReference.md)
 - [Types of Component](ReactJs/TypesOfComponent.md)
 - [React condition](ReactJs/condition.md)
+- [Immutably updating state](ReactJs/ImmutablyUpdatingState.md)
+- [Styling Components](ReactJs/stylingComponents.md)
 - [Higher Order Component](ReactJs/HOC.md)
 
 ### Algorithm
 3 Algorithm problems that I've solved everyday
 
 - [Solving problems](Algorithm/solve.js)
+- [CodeWars](https://github.com/Jungincha/TIL/tree/master/Algorithm/CodeWars)
+- [FreeCodeCamp](https://github.com/Jungincha/TIL/tree/master/Algorithm/FreeCodeCamp)
 
 ### Others
 - [Row, Col](Others/row_col.md)
