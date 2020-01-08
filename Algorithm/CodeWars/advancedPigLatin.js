@@ -34,4 +34,4 @@ function translate(sentence) {
 };
 
 translate('Hello World') // 'Ellohay Orldway'
-translate('Pizza? Yes Please!!')// 'Izzapay? Esyay Easeplay!!'
+translate('Pizza? Yes Please!!')// 'Izzapay? Esyay Easeplay!!' => 이렇게 안나옴 
