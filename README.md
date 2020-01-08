@@ -55,8 +55,8 @@ variety of languages and technologies.
 3 Algorithm problems that I've solved everyday
 
 - [Solving problems](Algorithm/solve.js)
-- [CodeWars](TIL/Algorithm/CodeWars/)
-- [FreeCodeCamp](TIL/Algorithm/FreeCodeCamp/)
+- [CodeWars](https://github.com/Jungincha/TIL/tree/master/Algorithm/CodeWars)
+- [FreeCodeCamp](https://github.com/Jungincha/TIL/tree/master/Algorithm/FreeCodeCamp)
 
 ### Others
 - [Row, Col](Others/row_col.md)
