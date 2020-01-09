@@ -49,6 +49,7 @@ variety of languages and technologies.
 - [React condition](ReactJs/condition.md)
 - [Immutably updating state](ReactJs/ImmutablyUpdatingState.md)
 - [Styling Components](ReactJs/stylingComponents.md)
+- [Component Lifecycle](ReactJs/componentLifecycle.md)
 - [Higher Order Component](ReactJs/HOC.md)
 
 ### Algorithm
