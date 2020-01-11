@@ -51,6 +51,7 @@ variety of languages and technologies.
 - [Styling Components](ReactJs/stylingComponents.md)
 - [Component Lifecycle](ReactJs/componentLifecycle.md)
 - [Updating DOM](ReactJs/updatingDOM.md)
+- [Rendering JSX](ReactJs/renderJSX.md)
 - [Higher Order Component](ReactJs/HOC.md)
 
 ### Algorithm
