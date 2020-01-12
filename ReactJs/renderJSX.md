@@ -36,3 +36,23 @@ return (
   </Aux>
 );
 ```
+4. Using `React.Fragment`
+```jsx
+return (
+  <React.Fragment>
+   <p>This is a react app</p>,
+   <h1>Hello!</h1>
+  </React.Fragment>
+);
+```
+or
+```jsx
+import React, {Component, Fragment} from 'react';
+
+return (
+  <Fragment>
+   <p>This is a react app</p>,
+   <h1>Hello!</h1>
+  </Fragment>
+);
+```
