@@ -78,4 +78,19 @@ return (
   
   export default withClass(App, classes.App);
 ```
+### Passing unknown props to HOC JS logic
+You have to use `spread operator` to pass down the props to each component <br>
+`{...props}`
+```jsx
+import React from 'react';
 
+const withClass = (WrappedComponent, className) => {
+    return props => (
+        <div className={className}>
+            < WrappedComponent {...props} />
+        </div>
+    );
+}
+
+export default withClass;
+```
