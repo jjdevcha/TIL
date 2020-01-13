@@ -18,3 +18,9 @@ And this Context also comes with `UserContext.Provider` and `UserContext.Consume
 2. Wrap the parent component with `Context.Provider`
 
 3. Wrap the child component with `Context.Consumer` and use the global variables.
+
+
+< OR !! IF YOU USE BELOW ONES, NO NEED TO WRAP! >
+* You can use `static contextType = Context` to use `Context` easily 
+(But it can only be used in Class components)<br>
+* You can use `useContext()` in Functional components
