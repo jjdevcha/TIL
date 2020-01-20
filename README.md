@@ -63,6 +63,7 @@ variety of languages and technologies.
 
 ### Others
 - [Row, Col](Others/row_col.md)
+- [Axios Interceptor](Others/axios_interceptor.md)
 
 ### Practice 
 Simple practice with my study
