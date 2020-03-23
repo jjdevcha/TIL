@@ -19,6 +19,9 @@ variety of languages and technologies.
 
 ---
 
+### HTML
+- [Table]
+
 ### CSS
 
 - [Flexbox](CSS/Flexbox.md)
