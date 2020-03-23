@@ -20,7 +20,7 @@ variety of languages and technologies.
 ---
 
 ### HTML
-- [Table]
+- [Table](HTML/table.md)
 
 ### CSS
 
