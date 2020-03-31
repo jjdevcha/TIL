@@ -15,7 +15,7 @@ variety of languages and technologies.
 * [Algorithm](#Algorithm)
 * [Others](#Others)
 * [Practice](#Practice)
-* [Eloquent_Javascript](#Eloquent_Javascipt)
+* [Eloquent Javascript](#Eloquent_Javascipt)
 
 
 ---
