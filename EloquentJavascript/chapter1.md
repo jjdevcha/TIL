@@ -13,7 +13,7 @@ Only `0, NaN, ""` is false
 +, -, *, /, and %
 
 - string concatenation
-+
+`+`
 
 - comparison
 There can be **type coersion** so better use `===` or `!==`
