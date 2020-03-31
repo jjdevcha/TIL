@@ -1,4 +1,4 @@
-# 1 values, types, and operators
+# Chapter 1 values, types, and operators
 
 ### 4 types of values
 - number
