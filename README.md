@@ -80,6 +80,6 @@ Simple practice with my study
 Summary of studying **Eloquent Javascript**
 - [Chapter1](EloquentJavascript/chapter1.md)
 
-###CS50
+### CS50
 Following a EDX course, CS50, run by Havard University
-- [Week 0] Scratch (CS50/WEEK0.md)
+- [Week 0](CS50/WEEK0.md)
