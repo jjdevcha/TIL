@@ -16,6 +16,7 @@ variety of languages and technologies.
 * [Others](#Others)
 * [Practice](#Practice)
 * [Eloquent Javascript](#Eloquent_Javascipt)
+* [CS50](#CS50)
 
 
 ---
@@ -78,3 +79,7 @@ Simple practice with my study
 ### Eloquent Javascript
 Summary of studying **Eloquent Javascript**
 - [Chapter1](EloquentJavascript/chapter1.md)
+
+###CS50
+Following a EDX course, CS50, run by Havard University
+- [Week 0] Scratch (CS50/WEEK0.md)
