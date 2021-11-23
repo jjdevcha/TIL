@@ -83,3 +83,4 @@ Summary of studying **Eloquent Javascript**
 ### CS50
 Following a EDX course, CS50, run by Havard University
 - [Week 0](CS50/WEEK0.md)
+- [Week 1](CS50/WEEK1.md)
