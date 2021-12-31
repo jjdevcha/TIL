@@ -90,3 +90,4 @@ Following a EDX course, CS50, run by Havard University
 - [Week 5](CS50/WEEK5.md)
 - [Week 6](CS50/WEEK6.md)
 - [Week 7](CS50/WEEK7.md)
+- [Week 8](CS50/WEEK8.md)
