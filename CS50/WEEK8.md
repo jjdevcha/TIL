@@ -37,5 +37,14 @@ Technology that translates domain names into IP addresses
 A small segment of a larger message <br>
 `Net neutrality` the idea that these public routers treat packets equally, as opposed to allowing packets from certain companies or of certain types to be prioritized <br>
 
+#### HTML
+- DOM : Document Object Model = Tree structure of the HTML <br>
+![alt text](https://cs50.harvard.edu/x/2021/notes/8/html_structure.png) <br>
+There is a hierachy mapping each tag and its children <br>
 
+#### Javascript
+- `DOMContentLoaded` event <br>
+Event that is used to make sure that DOM is loaded before JS functions
 
+#### API
+A connection between computers or between computer programs. It is a type of software interface, offering a service to other pieces of software
