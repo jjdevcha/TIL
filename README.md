@@ -27,6 +27,7 @@ variety of languages and technologies.
 ### CSS
 
 - [Flexbox](CSS/Flexbox.md)
+- [Cubic Beizer](CSS/cubicBeizer.md)
 
 ### Javascript
 - [NaN](javascript/NaN.md)
