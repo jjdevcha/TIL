@@ -38,5 +38,94 @@ A function that calls itself is called recursive.
 <br>
 IT IS THREE TIMES SLOWER than the looping version.
 
+### Exercises
+
+#### Minimum
+##### My solution
+```js
+let min = (...num) => {
+  let min = num[0];
+	for (let i = 1; i < num.length; i++) {
+    	if (num[i] < min) {
+          min = num[i];
+        }
+    }
+  return min;
+}
+```
+##### Book solution
+```js
+function min(a, b) {
+  if (a < b) return a;
+  else return b;
+}
+```
+
+#### Recursion
+##### My solution
+```js
+const isEven = (number) => {
+	if (number === 0) {
+    	return true;
+    } else if (number === 1) {
+    	return false;
+    } else if (number > 1) {
+    	return isEven(number - 2);
+    } else {
+    	return '??';
+    }
+}
+```
+##### Book solution
+```js
+function isEven(n) {
+  if (n == 0) return true;
+  else if (n == 1) return false;
+  else if (n < 0) return isEven(-n);
+  else return isEven(n - 2);
+}
+```
+
+#### Bean counting
+##### My solution
+```js
+const countBs = (string) => {
+  	let count = 0;
+	for (let alph of string) {
+    	if (alph === 'B'){
+        	count++;
+        }
+	}
+  return count;
+};
+
+const countChar = (string, char) => {
+	let count = 0;
+  	for (let alph of string) {
+    	if (alph === char) {
+        	count++;
+        }
+    }
+  return count;
+}
+```
+
+##### Book solution
+```js
+function countChar(string, ch) {
+  let counted = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] == ch) {
+      counted += 1;
+    }
+  }
+  return counted;
+}
+
+function countBs(string) {
+  return countChar(string, "B");
+}
+```
+
 
 
