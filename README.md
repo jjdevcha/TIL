@@ -80,6 +80,8 @@ Simple practice with my study
 ### Eloquent Javascript
 Summary of studying **Eloquent Javascript**
 - [Chapter1](EloquentJavascript/chapter1.md)
+- [Chapter2](EloquentJavascript/chapter2.md)
+- [Chapter3](EloquentJavascript/chapter3.md)
 
 ### CS50
 Following a EDX course, CS50, run by Havard University
