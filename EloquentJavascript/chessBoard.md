@@ -21,6 +21,26 @@ for (let i = 1; i <= size; i++) {
 }
 ```
 
+### My solution2
+```js
+let col = 8;
+let row = 8;
+for (let i = 0; i < row; i++) {
+  let hashRow = '';
+  if ( i % 2 == 0) {
+  	hashRow += ' ';
+  }
+	for (let j = 0; j < col; j++) {
+        if (j % 2 == 0) {
+          hashRow += '#';
+        }else {
+          hashRow += ' ';
+        }
+    }
+	console.log(hashRow);
+}
+```
+
 ### Book solution
 
 ```js
