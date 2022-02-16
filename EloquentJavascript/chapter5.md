@@ -6,6 +6,7 @@ Functions that operate on other functions, either by taking them as arguments or
 - `map`
 - `reduce`
 - `some`
+- `every`
 
 #### Composability
 `reduce`
@@ -83,5 +84,71 @@ function every2(array, predicate) {
 #### Dominant writing direction
 ##### My solution
 ```js
+function characterScript(code) {
+  for (let script of SCRIPTS) {
+    if (script.ranges.some(([from, to]) => {
+      return code >= from && code < to;
+    })) {
+      return script;
+    }
+  }
+  return null;
+}
 
+
+
+function countBy(items, groupName) {
+  let counts = [];
+  for (let item of items) {
+    let name = groupName(item);
+    let known = counts.findIndex(c => c.name == name);
+    if (known == -1) {
+      counts.push({name, count: 1});
+    } else {
+      counts[known].count++;
+    }
+  }
+  return counts;
+}
+
+
+function dominantDirection(text) {
+  // Your code here.
+  let scripts = countBy(text, char => {
+  	let script = characterScript(char.codePointAt(0));
+    return script ? script.direction : 'none';
+  }).filter(({name}) => name != 'none');
+            
+	let dominantScript = scripts.reduce((a, b) => a.count > b.count? a : b);
+  
+  return dominantScript.name;
+}
+
+console.log(dominantDirection("Hello!"));
+// → ltr
+console.log(dominantDirection("Hey, مساء الخير"));
+// → rtl
+```
+
+##### Other person's solution
+It specifies the length of the scripts so that they can catch errors
+```js
+function dominantDirection(text) {
+  let scripts = countBy(text, char => {
+    let script = characterScript(char.codePointAt(0));
+    return script ? script.direction : "none";
+  }).filter(({name}) => name != "none");
+  switch (scripts.length) {
+    case 0:
+      return 'no dominant direction found';
+    case 1:
+      return scripts[0].name;
+    default:
+      if (scripts.reduce((acc, cur) => acc.count === cur.count)) {
+        return 'no dominant direction found';
+      } else {
+        return scripts.reduce((acc, cur) => acc.count >= cur.count ? acc.name : cur.name);
+      }
+  }
+}
 ```
