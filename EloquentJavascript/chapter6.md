@@ -99,3 +99,100 @@ class Vec {
   	
 }
 ```
+### Groups
+#### My solution
+```js
+class Group {
+  
+  constructor() {
+    this.group = [];
+  }
+  
+  // Methods
+  add(val) {
+    if (!this.group.includes(val)) this.group.push(val);
+  }
+  
+  delete(val) {
+    if (this.group.includes(val)) this.group.splice(this.group.indexOf(val), 1);
+  }
+  
+  has(val) {
+    return this.group.includes(val);
+  }
+  
+  static from(iterableObj) {
+    let newGroup = new Group();
+    for (let el of iterableObj) {
+    	newGroup.add(el);
+    }
+    return newGroup;
+  }
+}
+
+let group = Group.from([10, 20]);
+console.log(group.has(10));
+// → true
+console.log(group.has(30));
+// → false
+group.add(10);
+group.delete(10);
+console.log(group.has(10));
+// → false
+```
+
+#### Book solution
+```js
+class Group {
+  constructor() {
+    this.members = [];
+  }
+
+  add(value) {
+    if (!this.has(value)) {
+      this.members.push(value);
+    }
+  }
+
+  delete(value) {
+    this.members = this.members.filter(v => v !== value);
+  }
+
+  has(value) {
+    return this.members.includes(value);
+  }
+
+  static from(collection) {
+    let group = new Group;
+    for (let value of collection) {
+      group.add(value);
+    }
+    return group;
+  }
+}
+```
+
+### Iterable groups
+#### My solution
+```js
+for (let value of Group.from(["a", "b", "c"]).group) {
+  console.log(value);
+}
+
+// wrong solution
+```
+
+### Borrowing a Method
+#### My solution
+```js
+let map = {one: true, two: true, hasOwnProperty: true};
+
+// Fix this call
+console.log(hasOwnProperty.call(map, 'one'));
+// → true
+```
+
+#### Book solution
+```js
+console.log(Object.prototype.hasOwnProperty.call(map, "one"));
+```
