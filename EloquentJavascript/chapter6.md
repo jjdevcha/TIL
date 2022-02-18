@@ -71,4 +71,31 @@ The new class inherits properties and behavior from the old class
 ## The instanceof operator
 Useful to know wheter an object was derived from a specific class
 
+## Exercise
+### A vector type
+#### My solution
+```js
 
+class Vec {
+	constructor(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+  	
+  	//Method
+  	plus(vec) {
+      return new Vec(vec.x + this.x, vec.y + this.y);
+    }
+  	
+  	minus(vec) {
+      return new Vec(this.x - vec.x, this.y - vec.y);
+      // Math.abs(this.x - vec.x) will be better to show actual difference
+    }
+  
+  	// Getter
+  	get length() {
+    	return Math.sqrt(this.x ** 2 + this.y ** 2);
+    }
+  	
+}
+```
