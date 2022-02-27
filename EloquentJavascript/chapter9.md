@@ -25,3 +25,38 @@ Repetition operators are greedy \(+, *, ?, {}) <br>
 -> They match as much as they can and backtrack from there
 <br>
 If you put a question mark after them, they become nongreedy \(+?, *?, ??, {}?)
+
+## Exercise
+
+### Regexp golf
+#### My solution
+```js
+verify(/ca[rt]/,
+       ["my car", "bad cats"],
+       ["camper", "high art"]);
+
+verify(/pr?op/,
+       ["pop culture", "mad props"],
+       ["plop", "prrrop"]);
+
+verify(/ferr(et|y|ari)/,
+       ["ferret", "ferry", "ferrari"],
+       ["ferrum", "transfer A"]);
+
+verify(/ious($|\s)/,
+       ["how delicious", "spacious room"],
+       ["ruinous", "consciousness"]);
+
+verify(/\s(\.|,|;|:)/,
+       ["bad punctuation ."],
+       ["escape the period"]);
+
+verify(/\w{7,}/,
+       ["Siebentausenddreihundertzweiundzwanzig"],
+       ["no", "three small words"]);
+
+verify(/(\s|^)[^e]+(\s|$)/i,
+       ["red platypus", "wobbling nest"],
+       ["earth bed", "learning ape", "BEET"]);
+
+```
