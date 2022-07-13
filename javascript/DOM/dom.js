@@ -46,13 +46,72 @@
 
 // Query Selector All
 
-let titles = document.querySelectorAll('.title');
+// let titles = document.querySelectorAll('.title');
 
-console.log(titles);
-titles[0].textContent = 'Hello';
+// console.log(titles);
+// titles[0].textContent = 'Hello';
 
-let odd = document.querySelectorAll('li:nth-child(odd)');
+// let odd = document.querySelectorAll('li:nth-child(odd)');
 
-for (let i = 0; i < odd.length; i++) {
-    odd[i].style.backgroundColor = 'Coral';
-}
+// for (let i = 0; i < odd.length; i++) {
+//     odd[i].style.backgroundColor = 'Coral';
+// }
+
+
+// DOM part 2 
+let itemList = document.querySelector('#items');
+
+// // parent Node
+// console.log(itemList.parentNode)
+
+// itemList.parentNode.style.backgroundColor = '#f4f4f4';
+
+// parentElement
+// console.log(itemList.parentElement);
+
+// childNodes
+// console.log(itemList.childNodes);
+
+// console.log(itemList.children);
+// itemList.children[1].style.backgroundColor = 'yellow';
+
+// console.log(itemList.firstElementChild);
+// itemList.firstElementChild.textContent = 'Hello 1';
+// itemList.lastElementChild.textContent = 'Bye 4';
+
+// next Sibling
+// console.log(itemList.nextSibling);
+// nextElementSibling
+// console.log(itemList.nextElementSibling);
+
+// previousSibling
+// console.log(itemList.previousSibling);
+// previousElementSibling
+// console.log(itemList.previousElementSibling);
+// itemList.previousElementSibling.style.color = 'green';
+
+// Create a Div
+let newDiv = document.createElement('div');
+newDiv.className = 'hello';
+
+// Add id
+newDiv.id = 'hello1';
+
+//Add attribute
+newDiv.setAttribute('title', 'Hello Div');
+
+
+let newDivText = document.createTextNode('Hello World');
+
+// Add text to div
+newDiv.appendChild(newDivText);
+
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+
+
+console.log(newDiv);
+
+container.insertBefore(newDiv, h1);
+
+newDiv.style.fontSize = '30px';
