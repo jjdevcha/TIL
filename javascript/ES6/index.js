@@ -96,3 +96,32 @@
 // Includes()
 // let  numArray = [1, 2, 3, 4, 5];
 // console.log(numArray.includes(2));
+
+// Import & Export
+// import { data } from './example.js';
+// let updatedData = data;
+
+// updatedData.push(5);
+// console.log(updatedData);
+
+// padStart() & padEnd()
+
+// let example = "JungIn";
+// console.log(example.padStart(10, 'a'));
+// console.log(example.padEnd(10, 'a'));
+
+// Classes
+import { Animal, Cat } from './animal.js';
+
+let cat = new Cat('Cat', 4);
+
+// cat.legs = 3;
+
+// console.log(cat.legs);
+cat.makeNoise();
+// cat.makeNoise('Meow');
+
+console.log(cat.metaData);
+
+// console.log(Animal.return10());
+
