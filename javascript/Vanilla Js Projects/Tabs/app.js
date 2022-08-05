@@ -1,0 +1,24 @@
+const btns = document.querySelectorAll('.tab-btn');
+const about = document.querySelector('.about');
+const articles = document.querySelectorAll('.content');
+
+// using event bubbling
+// eventhough you are clicking child content it bubbles up to the parent event 
+
+about.addEventListener('click', (e) => {
+    const id = e.target.dataset.id;
+    if (id) {
+        // remove active from other button
+        btns.forEach((btn) => {
+            btn.classList.remove('active');
+            e.target.classList.add('active');
+        });
+        // hide other articles
+        articles.forEach((article) => {
+            article.classList.remove('active');
+        });
+        const element = document.getElementById(id);
+        element.classList.add('active');
+    }
+
+});
