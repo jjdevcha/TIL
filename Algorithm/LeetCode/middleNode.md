@@ -10,7 +10,7 @@ Input: head = [1, 2, 3, 4, 5, 6]
 Output: [4, 5, 6]
 ```
 
-## My solution
+## My solution 1
 ```js
 var middleNode = function(head) {
     let node = head;
@@ -28,6 +28,27 @@ var middleNode = function(head) {
     
     return returnNode;
 };
+```
+
+## My solution 2
+It's same mechanism with solution 1. But using less storage.
+```js
+let middleNode = function(head) {
+    let node = head;
+    let returnNode = head;
+    let count = 0;
+    
+    while(node) {
+        node = node.next;
+        count++;
+    }
+    
+    for (let i = 0; i <= (count / 2) - 1; i++) {
+        returnNode = returnNode.next;
+    }
+    
+    return returnNode;
+ };
 ```
 
 ## Someone else's solution
