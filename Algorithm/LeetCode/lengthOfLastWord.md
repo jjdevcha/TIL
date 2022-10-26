@@ -19,6 +19,7 @@ let lengthOfLastWord = function(s) {
 ```
 
 ## Someone else's
+Regex helps to filter space in front of the string or at the last part of the string. 
 ```js
 var lengthOfLastWord = function(s) {
     s = s.replace(/^\s+|\s+$/g,'');
