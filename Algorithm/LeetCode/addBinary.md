@@ -83,3 +83,20 @@ let addBinary = function(a, b) {
     
 };
 ```
+
+# Someone else's solution
+It's a similar approach considering it's using binary adding meachasnism. But this person used while loop so that we don't need to match the length of the number array and lessen the storage. Using `--` math is simple way as well. 
+```js
+var addBinary = function(a, b) {
+    let index1 = a.length;
+    let index2 = b.length;
+    let result = '';
+    let carry = 0;
+    while (index1 || index2) {
+        let sum = (index1 > 0 ? +a[--index1] : 0) + (index2 > 0 ? +b[--index2] : 0) + carry;
+        result = (sum % 2) + result;
+        carry = sum > 1 ? 1 : 0;
+    };
+    return carry ? carry + result : result;
+};
+```
