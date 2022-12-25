@@ -20,3 +20,8 @@
 | Imports & Exports | Yes | No |
 | HTML linking | `<script type="module">` | `<script>`|
 | File downloading | Asynchronous | Synchronous |
+
+
+# Exporting & Importing in ES6 Module
+- Imported statement always gets hoisted on top (Doesn't matter the order of the statement)
+- Variables are scoped to the module (private)
