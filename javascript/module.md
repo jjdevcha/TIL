@@ -22,6 +22,22 @@
 | File downloading | Asynchronous | Synchronous |
 
 
-# Exporting & Importing in ES6 Module
+## Exporting & Importing in ES6 Module
 - Imported statement always gets hoisted on top (Doesn't matter the order of the statement)
 - Variables are scoped to the module (private)
+
+
+## Top-level await
+- You can use await outside of async function (script type has to be `module`)
+- Top-level await can block the entire execution of the module
+- (Remember async function only returns Promise not Object)
+- If importing module imports top-level await module, it waits for the imported module to be executed first (Imported module blocks the entire importing module to be executed) 
+
+## Module pattern
+- Encapsulate functionality to have private data and to expose a public API ---> We normally use `function`: private datas are available/ can return data
+- We use IIFE(Immediately invoked function expression) ---> 1) Can ensure that it's only called once 2) Don't have to call it seperately
+- When the IIFE function is executed earlier why is it available to call the return data that was returned earlier? ---> **closure**
+- It has some limits (that's why we use native module) 
+
+### closure
+allow a function to have access to all the variables that were present at it's birthplace
