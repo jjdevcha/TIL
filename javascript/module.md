@@ -41,3 +41,16 @@
 
 ### closure
 allow a function to have access to all the variables that were present at it's birthplace
+
+## CommonJs Module
+The original way to package Javascript for Node.js. In Node.js each file is treated as a seperate module
+
+## Command Line
+`ls` : list of files of current directory
+`cd` : move to the directory
+`mkdir` : make a new directory(folder)
+`touch` or `edit` : make a file
+`rm` or `del` : remove the file
+`rmdir` : remove the directory
+`mv` : move a file to another directory
+`rm -R` : recursive remove (remove the directory and all the files inside)
