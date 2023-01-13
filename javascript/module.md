@@ -54,3 +54,7 @@ The original way to package Javascript for Node.js. In Node.js each file is trea
 `rmdir` : remove the directory
 `mv` : move a file to another directory
 `rm -R` : recursive remove (remove the directory and all the files inside)
+
+## npm
+`npm -v` : checking the version of npm
+`npm init` : makes package file 
