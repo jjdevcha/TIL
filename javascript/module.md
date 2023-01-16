@@ -55,6 +55,14 @@ The original way to package Javascript for Node.js. In Node.js each file is trea
 `mv` : move a file to another directory
 `rm -R` : recursive remove (remove the directory and all the files inside)
 
-## npm
+## npm (Node Package Manager)
+The default package manager for the Javascript runtime environment *Node.js*. npm can manage packages that are local dependencies of a particular project. 
+(Even though you delete `node_modules` file when you save the project, if you have dependencies written in `package.json`, `npm i` will re-install all the dependecies you need)
+
 `npm -v` : checking the version of npm
 `npm init` : makes package file 
+
+## Bundling with parcel and npm scripts
+devDependencies : a dependency that you need to use for building projects but doesn't use it in the code *e.g.*  `parcel`
+- `npx parcel index.html`
+- `script` start and build
