@@ -63,6 +63,78 @@ The default package manager for the Javascript runtime environment *Node.js*. np
 `npm init` : makes package file 
 
 ## Bundling with parcel and npm scripts
+Parcel.js is an open-source bundler. It supports many popular languages like Typescript and SASS, and can also handle file types like images and fonts. Parcel comes with a few extra tools built-in: a development server, diagnostics, minification, and even image compression. (In short, a bundler)
+
 devDependencies : a dependency that you need to use for building projects but doesn't use it in the code *e.g.*  `parcel`
 - `npx parcel index.html`
 - `script` start and build
+
+## Configuring Babel and Polyfilling
+Babel is a free and open-source JavaScript transcompiler that is mainly used to convert ECMAScript 2015+ (ES6+) code into backwards-compatible JavaScript code that can be run by older JavaScript engines. It allows web developers to take advantage of the newest features of the language (es6 -> es5 버전을 컴파일해 다양한 웹브라우저에서 자바스크립트를 편하게 사용할 수 있도록 함)
+
+a polyfill is code that implements a feature on web browsers that do not natively support the feature.
+
+## Modern and Clean Code
+### Readable code
+- Write code so that others can understand it
+- Write code so that you can understand it in 1 year
+- Avoid too "clever" and overcomplicated solutions
+- Use descriptive variable names: what they contain
+- Use descriptive function names: what they do
+
+### General
+- Use DRY principle (refactor you code)
+- Don't pollute global namespace, encapsulate instead
+- Don't use var
+- Use strong type checks (=== and !==)
+
+### Functions
+- Generally, functions should do only one thing
+- Don't use mor than 3 function parameters
+- Use default parameters whenever possible
+- Generally, reutrn same data type as received
+- Use arrow functions when they make code more readable
+
+### OOP
+- Use ES6 classes
+- Encapsulate data and don't mutate it form outside the class
+- Implement method chaining
+- Do not use arrow functions as methods (in regular objects)
+
+### Avoid Nested Code
+- Use early return (guard clauses)
+- Use ternary (conditional) or logical operators instead of if
+- Use multiple if instead of if/else-if
+- Avoid for loops, use array methods instead
+- Avoid callback-based asynchronous APIs
+
+### Asynchronouse code
+- Consume promises with async/await for best readability
+- Whenver possible, run promises in parallel(Promise.all)
+- Handle errors and promise rejections
+
+## Declarative and Functional Js principles
+### Declarative
+- Programmer tells "What to do"
+- e.g. `const doubled = arr.map(n => n * 2)`
+- Imperative way e.g. using for loop
+
+### Functional Programming
+- Declarative programming paradigm
+- Based on the idea of writing software by combining many pure functions, avoiding side effects and mutating data
+
+* side effect : Modification (mutation) of any data outside of the function (mutating external variables, logging to console, writing to DOM, etc.)
+* Pure function: Function without side effects. Does not depend on external variavles. Given the same inputs, always returns the same outputs.
+* Immutability: State(data) is never modified! Instead, state is copied and the copy is mutated and returned.
+
+#### Functional programming techniques
+- Try to avoid data mutations
+- Use built-in methods that don't produce side effects
+- Do data transformations with methods such as .map(), .filter() and .reduce()
+- Try to avoid side effects in functions: this is of course not always possible
+
+#### Declarative syntax
+- Use array and object destructuring
+- Use the spread operator(...)
+- Use the ternary (conditioonal) operator
+- Use template literals
