@@ -66,6 +66,7 @@ The default package manager for the Javascript runtime environment *Node.js*. np
 Parcel.js is an open-source bundler. It supports many popular languages like Typescript and SASS, and can also handle file types like images and fonts. Parcel comes with a few extra tools built-in: a development server, diagnostics, minification, and even image compression. (In short, a bundler)
 
 devDependencies : a dependency that you need to use for building projects but doesn't use it in the code *e.g.*  `parcel`
+- [How to bundle a web app with parcel](https://www.digitalocean.com/community/tutorials/how-to-bundle-a-web-app-with-parcel-js)
 - `npx parcel index.html`
 - `script` start and build
 
