@@ -12,17 +12,14 @@ Instead, You have to call the `useState()` Hook directly inside the function com
 Unlike the class the state doesn't have to be an object
 
 ### What does `useState()` return
-It returns a pair of values: the current state and the update function <br>
+It returns a pair of values: the current state(it will match the `initialSate` you have passed) and the update function. The set function that lets you update the state to a different value and trigger a re-render <br>
 They are similar with `this.state` and `this.setState()`
 
 ```jsx
 // Variables can be named with anything
-const [ count, setCount ] = useState(0);
-```
-
-### How do we read the state
-```jsx
-<h1> This is { count } </h1>
+const [state, setState] = useState(initialState);
+const [count, setCount] = useState(0);
+const [shopList, setShopList] = useState(() => createShopList());
 ```
 
 ### How do we update
