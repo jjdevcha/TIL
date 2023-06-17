@@ -59,6 +59,8 @@ variety of languages and technologies.
 - [Updating DOM](ReactJs/updatingDOM.md)
 - [Rendering JSX](ReactJs/renderJSX.md)
 - [Higher Order Component](ReactJs/HOC.md)
+- [useEffect](ReactJs/useEffect.md)
+
 
 ### Algorithm
 3 Algorithm problems that I've solved everyday
