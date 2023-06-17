@@ -34,6 +34,9 @@ useEffect(() => {
   }, [location]);
 ```
 
+[Good blog post to read about this topic](https://blog.webdevsimplified.com/2020-04/use-effect/)
+
+
 
 
 
