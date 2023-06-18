@@ -33,6 +33,12 @@ It is used to trigger an action. When a event is happened it calls the respectiv
     dispatch({ type: 'INCREMENT' });
   };
 ```
+### When to use useState() vs useReducer()
+| useState() | useReducer() |
+| ----------- | ----------- |
+| The main sate management tool | More powerful|
+| Independent pieces of state/ data | Related pieces of state/ data - more complex state updates |
+
 
 
 
