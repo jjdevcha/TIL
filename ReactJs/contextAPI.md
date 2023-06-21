@@ -24,3 +24,8 @@ And this Context also comes with `UserContext.Provider` and `UserContext.Consume
 * You can use `static contextType = Context` to use `Context` easily 
 (But it can only be used in Class components)<br>
 * You can use `useContext()` in Functional components
+
+### Context limitations
+- React Context is not optimized for high frequency changes
+- React Context also shouldn't be used to replace ALL component communications and props
+
