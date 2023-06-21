@@ -60,6 +60,8 @@ variety of languages and technologies.
 - [Rendering JSX](ReactJs/renderJSX.md)
 - [Higher Order Component](ReactJs/HOC.md)
 - [useEffect](ReactJs/useEffect.md)
+- [context API](ReactJs/contextAPI.md)
+
 
 
 ### Algorithm
