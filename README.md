@@ -62,6 +62,8 @@ variety of languages and technologies.
 - [useEffect](ReactJs/useEffect.md)
 - [useReducder](ReactJs/useReducer.md)
 - [context API](ReactJs/contextAPI.md)
+- [Rules of Hooks](ReactJs/rulesOfHooks.md)
+
 
 
 
