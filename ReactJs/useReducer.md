@@ -1,5 +1,9 @@
-# useReducer()
+# useReducer
+
 A powerful React hook that helps manage complex state logic within a component
+---
+The idea behind useReducer is it gives you a more concrete way to handle complex state so it gives you to set actions that you can perform on your state and it's going to convert your current state to a new version of the state based the action you send it. - Web dev
+---
 
 ## How to use it
 ```js
