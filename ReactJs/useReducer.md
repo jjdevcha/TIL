@@ -43,6 +43,46 @@ It is used to trigger an action. When a event is happened it calls the respectiv
 | The main sate management tool | More powerful|
 | Independent pieces of state/ data | Related pieces of state/ data - more complex state updates |
 
+### Code Examples
+```js
+import React, { useState, useReducer } from "react";
+import "./App.css";
+
+const ACTIONS = {
+  MINUS: "minus",
+  PLUS: "plus",
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.MINUS:
+      return { count: state.count - 1 };
+    case ACTIONS.PLUS:
+      return { count: state.count + 1 };
+    default:
+      return state;
+  }
+}
+
+function App() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  return (
+    <div className="App">
+      <button onClick={() => dispatch({ type: ACTIONS.MINUS })}>-</button>
+      <span>{state.count}</span>
+      <button onClick={() => dispatch({ type: ACTIONS.PLUS })}>+</button>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+
+
+
 
 
 
