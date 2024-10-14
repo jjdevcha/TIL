@@ -43,3 +43,6 @@ user1.getUserGender() //'Female;
 ```
 2. Partial Application or Currying
 3. Event Handlers and Asynchronous Code
+
+### Reference
+[velog | Lexical scope, Closure and Curring](https://shorturl.at/K2Vnn)
