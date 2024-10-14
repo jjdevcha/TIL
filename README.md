@@ -34,7 +34,7 @@ variety of languages and technologies.
 - [Object, Prototype](javascript/object_prototype.js)
 - [Prototype](javascript/Prototype.md)
 - [Encapsulation](javascript/Encapsulation.md)
-- [Closure](javascript/closure.js)
+- [Closure and Lexical Scope](javascript/closure-and-lexical-scope.md)
 - [Recursion](javascript/recursion.md)
 - [Getter, Setter, Static](javascript/Getter_Setter_Static.md)
 - [Promise](javascript/Promise.md)
