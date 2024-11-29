@@ -102,3 +102,7 @@ Following a EDX course, CS50, run by Havard University
 - [Week 7](CS50/WEEK7.md)
 - [Week 8](CS50/WEEK8.md)
 - [Week 9](CS50/WEEK9.md)
+
+### GitHub
+Git CLI that I need to remember 
+- [Push change without updating the hash](GitHub/amend.md)
