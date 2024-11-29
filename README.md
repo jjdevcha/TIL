@@ -17,6 +17,7 @@ variety of languages and technologies.
 * [Practice](#Practice)
 * [Eloquent Javascript](#Eloquent-Javascipt)
 * [CS50](#CS50)
+* [GitHub](#GitHub)
 
 
 ---
