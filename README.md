@@ -65,7 +65,8 @@ variety of languages and technologies.
 - [context API](ReactJs/contextAPI.md)
 - [Rules of Hooks](ReactJs/rulesOfHooks.md)
 
-
+### TypeScript
+- [Non-null assertion operator](TypeScript/non-null-assertion.md)
 
 
 ### Algorithm
